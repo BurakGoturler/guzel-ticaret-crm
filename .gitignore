@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# statik önizleme çıktısı
+guzel-ticaret-arayuz.html

@@ -1,0 +1,26 @@
+Exceldeki iş süreçlerini crm'e taşıyacağız.
+
+Genel isim Güzel Ticaret
+2 şahıs firması
+1. Ecrin Yaş Sebze Meyve
+2. Güzel Ticaret
+
+
+
+Portalda tek ekranda her ikisini düzenli şekilde görmemiz lazım.
+
+açık kaynak türklerin yaptığını emin olduğun 10 adet crm uyugoamsına bah githbudan 
+
+Halis ayrı olarak satış yapıyor, kişi alıyorsa belirlenen fiyattan farklı satıyor.
+
+Ürünler
+kışlık patates, patates, kuru soğan, patlıcan, biber, hıyar, taze fasulye, muz, taze üzüm, yazlık kabak, limon, karpuz, kavun, şeftali, kayısı, kiraz, armut, çilek, ayva, yeşil biber, kırmızı biber, kivi, karnabahar, pırasa, turp, havuç, soğan, kestane kabağı, nar, portakal ürünler bunlar duruma göre ekleme çıkarma oalcak.
+
+Ürünler kilo olarak alınıyor 
+
+
+
+
+
+
+

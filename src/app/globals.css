@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+ * GÜZEL TİCARET — token katmanı
+ * Kabuk ve yüzeyler Börü CRM tasarım sisteminden (crm-genel) devralındı:
+ * açık gri-mavi zemin + beyaz kart + lacivert kabuk. Firma renkleri
+ * dataviz doğrulayıcısından geçti (Ecrin ↔ Güzel: CVD ΔE 24.7, normal 33.6).
+ * ------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  color-scheme: light;
+  --canvas: #eef1f6;
+  --surface: #ffffff;
+  --surface-alt: #f6f8fb;
+  --zebra: #f2f5f9;
+  --hairline: #e5e7eb;
+  --hairline-strong: #d4d8de;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --ink: #0f1e3d;
+  --body-ink: #1c2942;
+  --muted-ink: #5b6472;
+  --faint-ink: #8a93a1;
+
+  --shell: #0f1e3d;
+  --shell-ink: #c9d2e3;
+  --shell-active: #1d3260;
+
+  /* Etkileşim — kabuk lacivertinden bir kademe açık; firma mavisiyle karışmaz */
+  --brand: #1d3260;
+  --brand-hover: #0f1e3d;
+  --brand-soft: #e8edf7;
+  --brand-ink: #ffffff;
+
+  /* Firmalar — her ekranda aynı varlık aynı renk */
+  --firm-ecrin: #2a78d6;
+  --firm-ecrin-soft: #e6f0fc;
+  --firm-guzel: #eb6834;
+  --firm-guzel-soft: #fdeee7;
+  --firm-none: #9aa3b0;
+
+  /* Metrik serileri (satış / alış / kâr) — kontrast uyarısı: tablo görünümü zorunlu */
+  --series-sale: #6250d6;
+  --series-cost: #eda100;
+  --series-profit: #1baf7a;
+  --series-loss: #e34948;
+
+  --success: #15803d;
+  --success-soft: #dcfce7;
+  --warning: #a16207;
+  --warning-soft: #fef3c7;
+  --danger: #be123c;
+  --danger-soft: #fee2e2;
+
+  --grid: #e8ebf0;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --canvas: #0d1424;
+    --surface: #151e31;
+    --surface-alt: #1a2439;
+    --zebra: #18223a;
+    --hairline: #26314a;
+    --hairline-strong: #34405c;
+    --ink: #eef2fa;
+    --body-ink: #d6dceb;
+    --muted-ink: #9aa5bb;
+    --faint-ink: #6e7a92;
+    --shell: #0a1020;
+    --shell-active: #1d2a48;
+    --brand: #4a6fc4;
+    --brand-hover: #5b80d6;
+    --brand-soft: #1c2948;
+    --firm-ecrin: #3987e5;
+    --firm-ecrin-soft: #16294a;
+    --firm-guzel: #d95926;
+    --firm-guzel-soft: #3a1f15;
+    --series-sale: #9085e9;
+    --series-cost: #c98500;
+    --series-profit: #199e70;
+    --series-loss: #e66767;
+    --success-soft: #12301f;
+    --warning-soft: #33280d;
+    --danger-soft: #3a1520;
+    --grid: #222c42;
   }
 }
 
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-zebra: var(--zebra);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-ink: var(--ink);
+  --color-body: var(--body-ink);
+  --color-muted: var(--muted-ink);
+  --color-faint: var(--faint-ink);
+  --color-shell: var(--shell);
+  --color-shell-ink: var(--shell-ink);
+  --color-shell-active: var(--shell-active);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-ecrin: var(--firm-ecrin);
+  --color-ecrin-soft: var(--firm-ecrin-soft);
+  --color-guzel: var(--firm-guzel);
+  --color-guzel-soft: var(--firm-guzel-soft);
+  --color-sale: var(--series-sale);
+  --color-cost: var(--series-cost);
+  --color-profit: var(--series-profit);
+  --color-loss: var(--series-loss);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--body-ink);
+}
+
+body {
+  font-feature-settings: "tnum" 1, "cv11" 1;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Recharts odak çerçevesi */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
 }

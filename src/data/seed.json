@@ -1,0 +1,4671 @@
+{
+ "source": "2026 yaz dönemi.xlsx",
+ "generatedAt": "2026-11-01T23:08:43",
+ "firms": [
+  {
+   "id": "ecrin",
+   "name": "Ecrin Yaş Sebze Meyve",
+   "short": "Ecrin"
+  },
+  {
+   "id": "guzel",
+   "name": "Güzel Ticaret",
+   "short": "Güzel"
+  }
+ ],
+ "seasons": [
+  {
+   "id": "kis-2025",
+   "name": "2025-26 Kış Dönemi (devreden)",
+   "start": "2025-11-01",
+   "end": "2026-04-30"
+  },
+  {
+   "id": "yaz-2026",
+   "name": "2026 Yaz Dönemi",
+   "start": "2026-05-01",
+   "end": "2026-10-31"
+  },
+  {
+   "id": "kis-2026",
+   "name": "2026-27 Kış Dönemi",
+   "start": "2026-11-01",
+   "end": "2027-05-31"
+  }
+ ],
+ "products": [
+  {
+   "id": "kislik-patates",
+   "name": "Kışlık patates",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "patates",
+   "name": "Patates",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kuru-sogan",
+   "name": "Kuru soğan",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "patlican",
+   "name": "Patlıcan",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "yesil-biber",
+   "name": "Yeşil biber",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "hiyar",
+   "name": "Hıyar",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "taze-fasulye",
+   "name": "Taze fasulye",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "muz",
+   "name": "Muz",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "taze-uzum",
+   "name": "Taze üzüm",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "yazlik-kabak",
+   "name": "Yazlık kabak",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "limon",
+   "name": "Limon",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "karpuz",
+   "name": "Karpuz",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kavun",
+   "name": "Kavun",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "seftali",
+   "name": "Şeftali",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kayisi",
+   "name": "Kayısı",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kiraz",
+   "name": "Kiraz",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "armut",
+   "name": "Armut",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "cilek",
+   "name": "Çilek",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "ayva",
+   "name": "Ayva",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kirmizi-biber",
+   "name": "Kırmızı biber",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kivi",
+   "name": "Kivi",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "karnabahar",
+   "name": "Karnabahar",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "pirasa",
+   "name": "Pırasa",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "turp",
+   "name": "Turp",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "havuc",
+   "name": "Havuç",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "sogan",
+   "name": "Soğan",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "kestane-kabagi",
+   "name": "Kestane kabağı",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "nar",
+   "name": "Nar",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "portakal",
+   "name": "Portakal",
+   "category": "meyve",
+   "unit": "kg",
+   "active": true
+  },
+  {
+   "id": "maydanoz",
+   "name": "Maydanoz",
+   "category": "sebze",
+   "unit": "kg",
+   "active": true
+  }
+ ],
+ "contracts": [
+  {
+   "id": "yaz-patates",
+   "productId": "patates",
+   "seasonId": "yaz-2026",
+   "contractKg": 300000,
+   "salePrice": 48.4
+  },
+  {
+   "id": "yaz-kuru-sogan",
+   "productId": "kuru-sogan",
+   "seasonId": "yaz-2026",
+   "contractKg": 120000,
+   "salePrice": 46.5
+  },
+  {
+   "id": "yaz-yesil-biber",
+   "productId": "yesil-biber",
+   "seasonId": "yaz-2026",
+   "contractKg": 70000,
+   "salePrice": 58
+  },
+  {
+   "id": "yaz-hiyar",
+   "productId": "hiyar",
+   "seasonId": "yaz-2026",
+   "contractKg": 60000,
+   "salePrice": 53
+  },
+  {
+   "id": "yaz-taze-fasulye",
+   "productId": "taze-fasulye",
+   "seasonId": "yaz-2026",
+   "contractKg": 18000,
+   "salePrice": 103
+  },
+  {
+   "id": "yaz-karpuz",
+   "productId": "karpuz",
+   "seasonId": "yaz-2026",
+   "contractKg": 120000,
+   "salePrice": 45.5
+  },
+  {
+   "id": "yaz-kavun",
+   "productId": "kavun",
+   "seasonId": "yaz-2026",
+   "contractKg": 100000,
+   "salePrice": 49
+  },
+  {
+   "id": "yaz-seftali",
+   "productId": "seftali",
+   "seasonId": "yaz-2026",
+   "contractKg": 20000,
+   "salePrice": 91
+  },
+  {
+   "id": "yaz-kayisi",
+   "productId": "kayisi",
+   "seasonId": "yaz-2026",
+   "contractKg": 20000,
+   "salePrice": 136.5
+  },
+  {
+   "id": "yaz-kiraz",
+   "productId": "kiraz",
+   "seasonId": "yaz-2026",
+   "contractKg": 15000,
+   "salePrice": 147
+  },
+  {
+   "id": "yaz-armut",
+   "productId": "armut",
+   "seasonId": "yaz-2026",
+   "contractKg": 27000,
+   "salePrice": 85
+  },
+  {
+   "id": "yaz-cilek",
+   "productId": "cilek",
+   "seasonId": "yaz-2026",
+   "contractKg": 28000,
+   "salePrice": 160
+  },
+  {
+   "id": "onceki-patates",
+   "productId": "patates",
+   "seasonId": "kis-2025",
+   "contractKg": 15442,
+   "salePrice": 33
+  },
+  {
+   "id": "onceki-maydanoz",
+   "productId": "maydanoz",
+   "seasonId": "kis-2025",
+   "contractKg": 5070,
+   "salePrice": 10.5
+  },
+  {
+   "id": "onceki-kuru-sogan",
+   "productId": "kuru-sogan",
+   "seasonId": "kis-2025",
+   "contractKg": 15489,
+   "salePrice": 27.9
+  },
+  {
+   "id": "kis-patates",
+   "productId": "patates",
+   "seasonId": "kis-2026",
+   "contractKg": 164360,
+   "salePrice": 48.4
+  },
+  {
+   "id": "kis-kuru-sogan",
+   "productId": "kuru-sogan",
+   "seasonId": "kis-2026",
+   "contractKg": 59247,
+   "salePrice": 46.5
+  },
+  {
+   "id": "kis-portakal",
+   "productId": "portakal",
+   "seasonId": "kis-2026",
+   "contractKg": 90000,
+   "salePrice": 70
+  },
+  {
+   "id": "kis-nar",
+   "productId": "nar",
+   "seasonId": "kis-2026",
+   "contractKg": 30000,
+   "salePrice": 131
+  },
+  {
+   "id": "kis-kivi",
+   "productId": "kivi",
+   "seasonId": "kis-2026",
+   "contractKg": 25000,
+   "salePrice": 127.5
+  },
+  {
+   "id": "kis-karnabahar",
+   "productId": "karnabahar",
+   "seasonId": "kis-2026",
+   "contractKg": 50000,
+   "salePrice": 68
+  },
+  {
+   "id": "kis-havuc",
+   "productId": "havuc",
+   "seasonId": "kis-2026",
+   "contractKg": 60000,
+   "salePrice": 60
+  },
+  {
+   "id": "kis-turp",
+   "productId": "turp",
+   "seasonId": "kis-2026",
+   "contractKg": 17000,
+   "salePrice": 44
+  },
+  {
+   "id": "kis-pirasa",
+   "productId": "pirasa",
+   "seasonId": "kis-2026",
+   "contractKg": 25000,
+   "salePrice": 60
+  },
+  {
+   "id": "kis-kestane-kabagi",
+   "productId": "kestane-kabagi",
+   "seasonId": "kis-2026",
+   "contractKg": 30000,
+   "salePrice": 54
+  }
+ ],
+ "assignments": [
+  {
+   "month": "2026-05",
+   "productId": "kuru-sogan",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-05",
+   "productId": "taze-fasulye",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-05",
+   "productId": "kayisi",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-05",
+   "productId": "patates",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-05",
+   "productId": "maydanoz",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-05",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-05",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-06",
+   "productId": "patates",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-06",
+   "productId": "taze-fasulye",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kayisi",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kiraz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-06",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-06",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-07",
+   "productId": "patates",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-07",
+   "productId": "taze-fasulye",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-07",
+   "productId": "karpuz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-07",
+   "productId": "kiraz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-07",
+   "productId": "seftali",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-07",
+   "productId": "kavun",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-07",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-07",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-07",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-08",
+   "productId": "armut",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-08",
+   "productId": "patates",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-08",
+   "productId": "karpuz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-08",
+   "productId": "seftali",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-08",
+   "productId": "kavun",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-08",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-08",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-08",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-09",
+   "productId": "armut",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-09",
+   "productId": "patates",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-09",
+   "productId": "karpuz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-09",
+   "productId": "seftali",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-09",
+   "productId": "kavun",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-09",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-09",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-09",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-10",
+   "productId": "armut",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-10",
+   "productId": "patates",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-10",
+   "productId": "karpuz",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-10",
+   "productId": "seftali",
+   "firmId": "ecrin"
+  },
+  {
+   "month": "2026-10",
+   "productId": "kavun",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-10",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-10",
+   "productId": "hiyar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-10",
+   "productId": "yesil-biber",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "patates",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "portakal",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "nar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "kivi",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "karnabahar",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "kestane-kabagi",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "kuru-sogan",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "pirasa",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "turp",
+   "firmId": "guzel"
+  },
+  {
+   "month": "2026-11",
+   "productId": "havuc",
+   "firmId": "guzel"
+  }
+ ],
+ "deliveries": [
+  {
+   "date": "2026-05-31",
+   "productId": "patates",
+   "contractId": "onceki-patates",
+   "kg": 15442,
+   "salePrice": 33,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "maydanoz",
+   "contractId": "onceki-maydanoz",
+   "kg": 5070,
+   "salePrice": 10.5,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "kuru-sogan",
+   "contractId": "onceki-kuru-sogan",
+   "kg": 15489,
+   "salePrice": 27.9,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 13791,
+   "salePrice": 58,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 10110,
+   "salePrice": 53,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 5197,
+   "salePrice": 103,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-05-31",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 11123,
+   "salePrice": 136.5,
+   "note": "Mayıs ay toplamı (Excel'de günlük döküm yok)"
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1699,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 977,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 928,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 603,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1300,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-06-01",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 1335,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-03",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1781,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-03",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1108,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-03",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 754,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-03",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 617,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-03",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 1350,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-05",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2599,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-05",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1672,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-05",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1448,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-05",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 928,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-05",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 1210,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1943,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1251,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1101,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 695,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 1111,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-08",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1685,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2348,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 892,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 879,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 661,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 1079,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-10",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1642,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3231,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1495,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1218,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1298,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1300,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 970,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-12",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1500,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-15",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2042,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-15",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 697,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-15",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 920,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-15",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 590,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-15",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 650,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1752,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1248,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 948,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 760,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 985,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "kayisi",
+   "contractId": "yaz-kayisi",
+   "kg": 985,
+   "salePrice": 136.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-17",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1375,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2235,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1436,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1230,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1036,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1244,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-06-19",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1493,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-22",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2254,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-22",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 665,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-22",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1192,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-22",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 733,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-22",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1475,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-24",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1111,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-24",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 891,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-24",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 676,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-24",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 558,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-24",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1495,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3415,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1115,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1112,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1131,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1100,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-06-26",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1425,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-06-29",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2351,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-06-29",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 828,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-06-29",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 623,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-06-29",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1400,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1976,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 550,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 932,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 547,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1070,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3607,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-01",
+   "productId": "kiraz",
+   "contractId": "yaz-kiraz",
+   "kg": 1186,
+   "salePrice": 147,
+   "note": null
+  },
+  {
+   "date": "2026-07-03",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1885,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-03",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1539,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-03",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1151,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-03",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 898,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-03",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3500,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3241,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 844,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 965,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 420,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3467,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-06",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1360,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1726,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 818,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 754,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 372,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3240,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-08",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1300,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2570,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1226,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1354,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1109,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1057,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3278,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-10",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1313,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1730,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 632,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 625,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 338,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3100,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-13",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1260,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-15",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2951,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-15",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 787,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-15",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 950,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-15",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 412,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-15",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3000,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1657,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 770,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1170,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1063,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1024,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-17",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3191,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-20",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1815,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-20",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1018,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-20",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1098,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-20",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 479,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-20",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3119,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2238,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 540,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 734,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 367,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1049,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3027,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-22",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1269,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2473,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1259,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1079,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 563,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3087,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-24",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1183,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1917,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 863,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 690,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 660,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 1055,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-27",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3054,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1665,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 615,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 879,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 632,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3019,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-29",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1265,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1694,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1096,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1003,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 642,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "taze-fasulye",
+   "contractId": "yaz-taze-fasulye",
+   "kg": 821,
+   "salePrice": 103,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 6086,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-07-31",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1179,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1257,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 498,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 900,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 705,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2984,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2440,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-03",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1011,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1037,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 831,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 583,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 476,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2982,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2422,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-05",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1225,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1577,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 895,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1502,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1010,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 5841,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 4802,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1001,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-07",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1158,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1869,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 660,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 947,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 550,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2988,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2350,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-10",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1200,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1806,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 560,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 830,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 715,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2889,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2255,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1200,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-12",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1100,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2284,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1215,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1262,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 695,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 5700,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2030,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-14",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1100,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1315,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 858,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 871,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 563,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2980,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2255,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-17",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1120,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3088,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 609,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 964,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 788,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2720,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-19",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2300,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2540,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1273,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1390,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 783,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2954,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2340,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1100,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-21",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1100,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1454,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 894,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 751,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 634,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1108,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-24",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1125,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1753,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 531,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1071,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 544,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2950,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-26",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2398,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2481,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1339,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1205,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 865,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2947,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2374,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-28",
+   "productId": "seftali",
+   "contractId": "yaz-seftali",
+   "kg": 1100,
+   "salePrice": 91,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1249,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 963,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 577,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 623,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2955,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2398,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1171,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-08-31",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": -2422,
+   "salePrice": 49,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1905,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 592,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 529,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 694,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2307,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-07",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1187,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1857,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 775,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 301,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 599,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2900,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-09",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2266,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3152,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1006,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 446,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 876,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 5800,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2336,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-11",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1161,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2074,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 889,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 559,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 621,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2900,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-14",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1193,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1004,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 787,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 294,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 626,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2950,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-16",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 4702,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3770,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1000,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 570,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 915,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3000,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2407,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-18",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1100,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1951,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1007,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 347,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 464,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2750,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2367,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-21",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1122,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2597,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 493,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 385,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 478,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 3000,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-23",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2366,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2102,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1183,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 594,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 876,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 2000,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2603,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-25",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1100,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-28",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1791,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-28",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 931,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-28",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 422,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-28",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 623,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-28",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2529,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2280,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 787,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 502,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 278,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "karpuz",
+   "contractId": "yaz-karpuz",
+   "kg": 5701,
+   "salePrice": 45.5,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2466,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1100,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 3444,
+   "salePrice": 48.4,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 2187,
+   "salePrice": 46.5,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 1785,
+   "salePrice": 58,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 1701,
+   "salePrice": 53,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 4713,
+   "salePrice": 49,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-09-30",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 175,
+   "salePrice": 85,
+   "note": "Düzeltme satırı (tarihsiz)"
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1842,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1037,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 437,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 871,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 4964,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-02",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1225,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-05",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1702,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-05",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 538,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-05",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 124,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-05",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 473,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-05",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2567,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-07",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2238,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-07",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 659,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-07",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 301,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-07",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 301,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-07",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2347,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2337,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 1082,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 302,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 628,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 4709,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-09",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1164,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-12",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1791,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-12",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 568,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-12",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 332,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-12",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 277,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-12",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1138,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-14",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1322,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-14",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 639,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-14",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 185,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-14",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 225,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-14",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 1995,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-16",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1826,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-16",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 963,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-16",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 227,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-16",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 552,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-16",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2276,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1025,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 484,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 231,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 337,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 1971,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-19",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1007,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-21",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2107,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-21",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 608,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-21",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 212,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-21",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 328,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-21",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2559,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2835,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 984,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 411,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 394,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 1910,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-23",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1244,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-26",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1575,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-26",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 917,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-26",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 126,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-26",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 415,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-28",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 1945,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-28",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 584,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-28",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 202,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-28",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 270,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "patates",
+   "contractId": "yaz-patates",
+   "kg": 2104,
+   "salePrice": 48.4,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "kuru-sogan",
+   "contractId": "yaz-kuru-sogan",
+   "kg": 880,
+   "salePrice": 46.5,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": 207,
+   "salePrice": 58,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "hiyar",
+   "contractId": "yaz-hiyar",
+   "kg": 345,
+   "salePrice": 53,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "kavun",
+   "contractId": "yaz-kavun",
+   "kg": 2200,
+   "salePrice": 49,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "armut",
+   "contractId": "yaz-armut",
+   "kg": 1668,
+   "salePrice": 85,
+   "note": null
+  },
+  {
+   "date": "2026-10-30",
+   "productId": "yesil-biber",
+   "contractId": "yaz-yesil-biber",
+   "kg": -227,
+   "salePrice": 58,
+   "note": "Düzeltme satırı (tarihsiz)"
+  }
+ ],
+ "purchasePrices": [
+  {
+   "month": "2026-05",
+   "productId": "patates",
+   "purchasePrice": 12
+  },
+  {
+   "month": "2026-05",
+   "productId": "maydanoz",
+   "purchasePrice": 6
+  },
+  {
+   "month": "2026-05",
+   "productId": "kuru-sogan",
+   "purchasePrice": 10
+  },
+  {
+   "month": "2026-05",
+   "productId": "yesil-biber",
+   "purchasePrice": 32
+  },
+  {
+   "month": "2026-05",
+   "productId": "hiyar",
+   "purchasePrice": 40
+  },
+  {
+   "month": "2026-05",
+   "productId": "taze-fasulye",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-05",
+   "productId": "kayisi",
+   "purchasePrice": 60
+  },
+  {
+   "month": "2026-05",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-06",
+   "productId": "patates",
+   "purchasePrice": 18
+  },
+  {
+   "month": "2026-06",
+   "productId": "kuru-sogan",
+   "purchasePrice": 14
+  },
+  {
+   "month": "2026-06",
+   "productId": "yesil-biber",
+   "purchasePrice": 28
+  },
+  {
+   "month": "2026-06",
+   "productId": "hiyar",
+   "purchasePrice": 28
+  },
+  {
+   "month": "2026-06",
+   "productId": "taze-fasulye",
+   "purchasePrice": 83
+  },
+  {
+   "month": "2026-06",
+   "productId": "karpuz",
+   "purchasePrice": 15
+  },
+  {
+   "month": "2026-06",
+   "productId": "kavun",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-06",
+   "productId": "kayisi",
+   "purchasePrice": 60
+  },
+  {
+   "month": "2026-06",
+   "productId": "kiraz",
+   "purchasePrice": 83
+  },
+  {
+   "month": "2026-06",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-07",
+   "productId": "patates",
+   "purchasePrice": 35
+  },
+  {
+   "month": "2026-07",
+   "productId": "kuru-sogan",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-07",
+   "productId": "yesil-biber",
+   "purchasePrice": 42
+  },
+  {
+   "month": "2026-07",
+   "productId": "hiyar",
+   "purchasePrice": 26
+  },
+  {
+   "month": "2026-07",
+   "productId": "taze-fasulye",
+   "purchasePrice": 75
+  },
+  {
+   "month": "2026-07",
+   "productId": "karpuz",
+   "purchasePrice": 15
+  },
+  {
+   "month": "2026-07",
+   "productId": "kavun",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-07",
+   "productId": "seftali",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-07",
+   "productId": "kayisi",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-07",
+   "productId": "kiraz",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-07",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-08",
+   "productId": "patates",
+   "purchasePrice": 30
+  },
+  {
+   "month": "2026-08",
+   "productId": "kuru-sogan",
+   "purchasePrice": 35
+  },
+  {
+   "month": "2026-08",
+   "productId": "yesil-biber",
+   "purchasePrice": 39
+  },
+  {
+   "month": "2026-08",
+   "productId": "hiyar",
+   "purchasePrice": 22
+  },
+  {
+   "month": "2026-08",
+   "productId": "taze-fasulye",
+   "purchasePrice": 75
+  },
+  {
+   "month": "2026-08",
+   "productId": "karpuz",
+   "purchasePrice": 15
+  },
+  {
+   "month": "2026-08",
+   "productId": "kavun",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-08",
+   "productId": "seftali",
+   "purchasePrice": 50
+  },
+  {
+   "month": "2026-08",
+   "productId": "kayisi",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-08",
+   "productId": "kiraz",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-08",
+   "productId": "armut",
+   "purchasePrice": 57
+  },
+  {
+   "month": "2026-08",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-09",
+   "productId": "patates",
+   "purchasePrice": 23
+  },
+  {
+   "month": "2026-09",
+   "productId": "kuru-sogan",
+   "purchasePrice": 23
+  },
+  {
+   "month": "2026-09",
+   "productId": "yesil-biber",
+   "purchasePrice": 45
+  },
+  {
+   "month": "2026-09",
+   "productId": "hiyar",
+   "purchasePrice": 24
+  },
+  {
+   "month": "2026-09",
+   "productId": "taze-fasulye",
+   "purchasePrice": 75
+  },
+  {
+   "month": "2026-09",
+   "productId": "karpuz",
+   "purchasePrice": 17
+  },
+  {
+   "month": "2026-09",
+   "productId": "kavun",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-09",
+   "productId": "seftali",
+   "purchasePrice": 50
+  },
+  {
+   "month": "2026-09",
+   "productId": "kayisi",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-09",
+   "productId": "kiraz",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-09",
+   "productId": "armut",
+   "purchasePrice": 60
+  },
+  {
+   "month": "2026-09",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-10",
+   "productId": "patates",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-10",
+   "productId": "kuru-sogan",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-10",
+   "productId": "yesil-biber",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-10",
+   "productId": "hiyar",
+   "purchasePrice": 35
+  },
+  {
+   "month": "2026-10",
+   "productId": "taze-fasulye",
+   "purchasePrice": 75
+  },
+  {
+   "month": "2026-10",
+   "productId": "karpuz",
+   "purchasePrice": 17
+  },
+  {
+   "month": "2026-10",
+   "productId": "kavun",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-10",
+   "productId": "seftali",
+   "purchasePrice": 50
+  },
+  {
+   "month": "2026-10",
+   "productId": "kayisi",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-10",
+   "productId": "kiraz",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-10",
+   "productId": "armut",
+   "purchasePrice": 60
+  },
+  {
+   "month": "2026-10",
+   "productId": "cilek",
+   "purchasePrice": 85
+  },
+  {
+   "month": "2026-11",
+   "productId": "patates",
+   "purchasePrice": 24
+  },
+  {
+   "month": "2026-11",
+   "productId": "kuru-sogan",
+   "purchasePrice": 32
+  },
+  {
+   "month": "2026-11",
+   "productId": "portakal",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-11",
+   "productId": "nar",
+   "purchasePrice": 30
+  },
+  {
+   "month": "2026-11",
+   "productId": "kivi",
+   "purchasePrice": 75
+  },
+  {
+   "month": "2026-11",
+   "productId": "karnabahar",
+   "purchasePrice": 17
+  },
+  {
+   "month": "2026-11",
+   "productId": "havuc",
+   "purchasePrice": 20
+  },
+  {
+   "month": "2026-11",
+   "productId": "turp",
+   "purchasePrice": 50
+  },
+  {
+   "month": "2026-11",
+   "productId": "pirasa",
+   "purchasePrice": 55
+  },
+  {
+   "month": "2026-11",
+   "productId": "kestane-kabagi",
+   "purchasePrice": 85
+  }
+ ],
+ "fires": [
+  {
+   "month": "2026-06",
+   "productId": "patates",
+   "kg": 100,
+   "price": 12.0,
+   "reason": "kasa-dara",
+   "note": "100*12"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kuru-sogan",
+   "kg": 70,
+   "price": 10.0,
+   "reason": "kasa-dara",
+   "note": "70*10"
+  },
+  {
+   "month": "2026-06",
+   "productId": "yesil-biber",
+   "kg": 40,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "40*30 fire"
+  },
+  {
+   "month": "2026-06",
+   "productId": "hiyar",
+   "kg": 30,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "30*30 fire"
+  },
+  {
+   "month": "2026-06",
+   "productId": "taze-fasulye",
+   "kg": 60,
+   "price": 85.0,
+   "reason": "fire",
+   "note": "60*85 fire"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kayisi",
+   "kg": 400,
+   "price": 60.0,
+   "reason": "fire",
+   "note": "400*60 fire kasa"
+  },
+  {
+   "month": "2026-06",
+   "productId": "kiraz",
+   "kg": 500,
+   "price": 85.0,
+   "reason": "fire",
+   "note": "500*85 fire"
+  },
+  {
+   "month": "2026-07",
+   "productId": "patates",
+   "kg": 100,
+   "price": 12.0,
+   "reason": "kasa-dara",
+   "note": "100*12"
+  },
+  {
+   "month": "2026-07",
+   "productId": "kuru-sogan",
+   "kg": 70,
+   "price": 10.0,
+   "reason": "kasa-dara",
+   "note": "70*10"
+  },
+  {
+   "month": "2026-07",
+   "productId": "yesil-biber",
+   "kg": 40,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "40*30 fire"
+  },
+  {
+   "month": "2026-07",
+   "productId": "hiyar",
+   "kg": 30,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "30*30 fire"
+  },
+  {
+   "month": "2026-07",
+   "productId": "taze-fasulye",
+   "kg": 60,
+   "price": 85.0,
+   "reason": "fire",
+   "note": "60*85 fire"
+  },
+  {
+   "month": "2026-07",
+   "productId": "karpuz",
+   "kg": 225,
+   "price": 15.0,
+   "reason": "kasa-dara",
+   "note": "225*15"
+  },
+  {
+   "month": "2026-07",
+   "productId": "kiraz",
+   "kg": 70,
+   "price": 85.0,
+   "reason": "kasa-dara",
+   "note": "70*85"
+  },
+  {
+   "month": "2026-08",
+   "productId": "patates",
+   "kg": 100,
+   "price": 12.0,
+   "reason": "kasa-dara",
+   "note": "100*12"
+  },
+  {
+   "month": "2026-08",
+   "productId": "kuru-sogan",
+   "kg": 70,
+   "price": 10.0,
+   "reason": "kasa-dara",
+   "note": "70*10"
+  },
+  {
+   "month": "2026-08",
+   "productId": "yesil-biber",
+   "kg": 40,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "40*30 fire"
+  },
+  {
+   "month": "2026-08",
+   "productId": "hiyar",
+   "kg": 30,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "30*30 fire"
+  },
+  {
+   "month": "2026-08",
+   "productId": "taze-fasulye",
+   "kg": 60,
+   "price": 85.0,
+   "reason": "fire",
+   "note": "60*85 fire"
+  },
+  {
+   "month": "2026-08",
+   "productId": "kiraz",
+   "kg": 70,
+   "price": 85.0,
+   "reason": "kasa-dara",
+   "note": "70*85"
+  },
+  {
+   "month": "2026-09",
+   "productId": "patates",
+   "kg": 100,
+   "price": 12.0,
+   "reason": "kasa-dara",
+   "note": "100*12"
+  },
+  {
+   "month": "2026-09",
+   "productId": "kuru-sogan",
+   "kg": 70,
+   "price": 10.0,
+   "reason": "kasa-dara",
+   "note": "70*10"
+  },
+  {
+   "month": "2026-09",
+   "productId": "yesil-biber",
+   "kg": 40,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "40*30 fire"
+  },
+  {
+   "month": "2026-09",
+   "productId": "hiyar",
+   "kg": 30,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "30*30 fire"
+  },
+  {
+   "month": "2026-09",
+   "productId": "taze-fasulye",
+   "kg": 60,
+   "price": 85.0,
+   "reason": "fire",
+   "note": "60*85 fire"
+  },
+  {
+   "month": "2026-09",
+   "productId": "kiraz",
+   "kg": 70,
+   "price": 85.0,
+   "reason": "kasa-dara",
+   "note": "70*85"
+  },
+  {
+   "month": "2026-10",
+   "productId": "patates",
+   "kg": 100,
+   "price": 20.0,
+   "reason": "kasa-dara",
+   "note": "100*20"
+  },
+  {
+   "month": "2026-10",
+   "productId": "kuru-sogan",
+   "kg": 70,
+   "price": 20.0,
+   "reason": "kasa-dara",
+   "note": "70*20"
+  },
+  {
+   "month": "2026-10",
+   "productId": "yesil-biber",
+   "kg": 40,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "40*30 fire"
+  },
+  {
+   "month": "2026-10",
+   "productId": "hiyar",
+   "kg": 30,
+   "price": 30.0,
+   "reason": "fire",
+   "note": "30*30 fire"
+  }
+ ],
+ "expenses": [
+  {
+   "month": "2026-05",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-05",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-05",
+   "label": "2 saat",
+   "amount": 47000
+  },
+  {
+   "month": "2026-05",
+   "label": "Eleman bayramlık",
+   "amount": 15000
+  },
+  {
+   "month": "2026-05",
+   "label": "Eksik yatan ceza ve diğer",
+   "amount": 50000
+  },
+  {
+   "month": "2026-06",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-06",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-06",
+   "label": "Ceza",
+   "amount": 35000
+  },
+  {
+   "month": "2026-07",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-07",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-07",
+   "label": "Damga ceza ve diğer",
+   "amount": 71000
+  },
+  {
+   "month": "2026-08",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-08",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-08",
+   "label": "Ceza",
+   "amount": 25000
+  },
+  {
+   "month": "2026-08",
+   "label": "Damga v",
+   "amount": 76000
+  },
+  {
+   "month": "2026-09",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-09",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-09",
+   "label": "Ceza",
+   "amount": 15000
+  },
+  {
+   "month": "2026-09",
+   "label": "Eksik yatan ceza ve diğer",
+   "amount": 60000
+  },
+  {
+   "month": "2026-10",
+   "label": "Halis",
+   "amount": 43000
+  },
+  {
+   "month": "2026-10",
+   "label": "Elemanlar",
+   "amount": 54000
+  },
+  {
+   "month": "2026-10",
+   "label": "Ceza",
+   "amount": 15000
+  },
+  {
+   "month": "2026-10",
+   "label": "Eksik yatan ceza ve diğer",
+   "amount": 42000
+  }
+ ],
+ "settings": {
+  "stopajRate": 0.022,
+  "advanceTaxRate": 0.02,
+  "kdvRate": 0.01
+ }
+}
