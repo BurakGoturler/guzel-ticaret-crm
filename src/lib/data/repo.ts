@@ -1,19 +1,17 @@
 import "server-only";
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
-import path from "node:path";
 import { connection } from "next/server";
 import seed from "@/data/seed.json";
 import type { Dataset } from "@/lib/domain/types";
+import { readDoc, updateDoc } from "./store";
 
 /**
  * Veri erişim katmanı.
  *
- * İlk açılışta Excel'den aktarılan seed.json → `.data/db.json` kopyalanır;
- * ekrandan girilen her kayıt (satış, fire, masraf, müşteri …) bu dosyaya yazılır.
- * Veritabanı fazında yalnızca bu dosya değişecek, ekranlar aynı kalacak.
+ * Veri tek belge ("dataset") olarak depoda durur: üretimde Postgres, yerelde `.data/db.json`
+ * (bkz. store.ts). İlk açılışta Excel'den aktarılan seed.json kullanılır; ekrandan girilen
+ * her kayıt (satış, fire, masraf, müşteri …) bu belgeye yazılır.
  */
-const DIR = path.join(process.cwd(), ".data");
-const FILE = path.join(DIR, "db.json");
+const KEY = "dataset";
 
 export const KURUM_ID = "kurum";
 
@@ -36,36 +34,27 @@ function migrate(raw: SeedShape): Dataset {
   return ds;
 }
 
-function readStore(): Dataset {
-  if (!existsSync(FILE)) return migrate(seed as unknown as SeedShape);
-  return migrate(JSON.parse(readFileSync(FILE, "utf8")) as SeedShape);
-}
-
-function writeStore(ds: Dataset) {
-  mkdirSync(DIR, { recursive: true });
-  const tmp = `${FILE}.tmp`;
-  writeFileSync(tmp, JSON.stringify(ds, null, 1), "utf8");
-  renameSync(tmp, FILE);
-}
+const initial = () => seed as unknown as SeedShape;
 
 /** Ekranlar için güncel veri. İstek anında okunur (önceden derlenmez). */
 export async function getDataset(): Promise<Dataset> {
   await connection();
-  return readStore();
+  return migrate((await readDoc<SeedShape>(KEY)) ?? initial());
 }
 
-/** Server action'lar için: veriyi oku, değiştir, yaz. */
-export function mutate<T>(fn: (ds: Dataset) => T): T {
-  const ds = readStore();
-  const out = fn(ds);
-  ds.generatedAt = new Date().toISOString();
-  writeStore(ds);
-  return out;
+/** Server action'lar için: veriyi oku, değiştir, yaz. `fn` hata fırlatırsa yazılmaz. */
+export async function mutate<T>(fn: (ds: Dataset) => T): Promise<T> {
+  return updateDoc<SeedShape, T>(KEY, initial, (raw) => {
+    const ds = migrate(raw);
+    const result = fn(ds);
+    ds.generatedAt = new Date().toISOString();
+    return { data: ds, result };
+  });
 }
 
 /** Excel'den gelen ilk hâle döner (Ayarlar → verileri sıfırla). */
-export function resetStore() {
-  writeStore(migrate(seed as unknown as SeedShape));
+export async function resetStore() {
+  await updateDoc<SeedShape, void>(KEY, initial, () => ({ data: migrate(initial()), result: undefined }));
 }
 
 export const newId = (prefix: string) => `${prefix}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;

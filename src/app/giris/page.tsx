@@ -11,7 +11,7 @@ export const instant = false;
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
   await connection();
-  const setup = listUsers().length === 0;
+  const setup = (await listUsers()).length === 0;
   const { next } = await searchParams;
 
   return (

@@ -33,7 +33,7 @@ function checkNew(name: string, username: string, password: string, confirm: str
 /* Giriş / çıkış                                                       */
 
 export async function login(_: ActionState, fd: FormData): Promise<ActionState> {
-  const user = findUserByUsername(str(fd.get("username")));
+  const user = await findUserByUsername(str(fd.get("username")));
   const password = String(fd.get("password") ?? "");
   if (!user || !verifyPassword(password, user.passwordHash)) {
     await wait(600); // deneme-yanılmayı yavaşlatır
@@ -50,7 +50,7 @@ export async function setupFirstAdmin(_: ActionState, fd: FormData): Promise<Act
   const password = String(fd.get("password") ?? "");
   const err = checkNew(name, username, password, String(fd.get("confirm") ?? ""));
   if (err) return fail(err);
-  const user = mutateUsers((users) => {
+  const user = await mutateUsers((users) => {
     if (users.length > 0) return null;
     const u: User = { id: newId("u"), name, username, passwordHash: hashPassword(password), sessionVersion: 1, createdAt: new Date().toISOString(), createdBy: null };
     users.push(u);
@@ -82,7 +82,7 @@ export async function createUser(_: ActionState, fd: FormData): Promise<ActionSt
   const password = String(fd.get("password") ?? "");
   const err = checkNew(name, username, password, String(fd.get("confirm") ?? ""));
   if (err) return fail(err);
-  const created = mutateUsers((users) => {
+  const created = await mutateUsers((users) => {
     if (users.some((u) => u.username === username)) return false;
     users.push({ id: newId("u"), name, username, passwordHash: hashPassword(password), sessionVersion: 1, createdAt: new Date().toISOString(), createdBy: me.id });
     return true;
@@ -99,7 +99,7 @@ export async function updateUser(_: ActionState, fd: FormData): Promise<ActionSt
   const username = normalizeUsername(str(fd.get("username")));
   if (name.length < 2) return fail("Ad soyad girin.");
   if (!USERNAME_RE.test(username)) return fail("Kullanıcı adı 3–32 karakter; yalnız küçük harf, rakam, nokta, tire, alt çizgi.");
-  const res = mutateUsers((users) => {
+  const res = await mutateUsers((users) => {
     const u = users.find((x) => x.id === id);
     if (!u) return "Kullanıcı bulunamadı.";
     if (users.some((x) => x.id !== id && x.username === username)) return `"${username}" kullanıcı adı alınmış.`;
@@ -118,7 +118,7 @@ export async function setUserPassword(_: ActionState, fd: FormData): Promise<Act
   const password = String(fd.get("password") ?? "");
   if (password.length < MIN_PASSWORD) return fail(`Şifre en az ${MIN_PASSWORD} karakter olmalı.`);
   if (password !== String(fd.get("confirm") ?? "")) return fail("Şifreler aynı değil.");
-  const user = mutateUsers((users) => {
+  const user = await mutateUsers((users) => {
     const u = users.find((x) => x.id === id);
     if (!u) return null;
     u.passwordHash = hashPassword(password);
@@ -134,7 +134,7 @@ export async function setUserPassword(_: ActionState, fd: FormData): Promise<Act
 export async function deleteUser(id: string): Promise<ActionState> {
   const me = await guard();
   if (id === me.id) return fail("Kendi hesabınızı silemezsiniz.");
-  const res = mutateUsers((users) => {
+  const res = await mutateUsers((users) => {
     if (users.length <= 1) return "Son kullanıcı silinemez.";
     const i = users.findIndex((u) => u.id === id);
     if (i < 0) return "Kullanıcı bulunamadı.";

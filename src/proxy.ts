@@ -1,12 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE, userFromToken } from "@/lib/auth/core";
+import { SESSION_COOKIE, verifyToken } from "@/lib/auth/core";
 
 /**
  * Giriş kapısı: geçerli oturum yoksa her sayfa /giris'e yönlenir.
- * Server action'lar ayrıca kendi içinde oturumu denetler (bkz. lib/actions.ts).
+ * Burada yalnız imza + süre bakılır (hızlı, veritabanına gitmez); kullanıcının hâlâ var olması ve
+ * şifre sürümü layout'ta (`requireUser`) ve her server action'da ayrıca denetlenir.
  */
-export function proxy(req: NextRequest) {
-  const user = userFromToken(req.cookies.get(SESSION_COOKIE)?.value);
+export async function proxy(req: NextRequest) {
+  const user = await verifyToken(req.cookies.get(SESSION_COOKIE)?.value);
   const { pathname, search } = req.nextUrl;
 
   if (pathname === "/giris") {

@@ -1,17 +1,15 @@
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
-import path from "node:path";
+import { readDoc, updateDoc } from "@/lib/data/store";
 
 /**
- * Kullanıcılar ve oturum imzası. Veri tablosundan (db.json) ayrı tutulur:
- * "verileri sıfırla" kullanıcıları silmez. Dosya `.data/auth.json` (git dışı).
+ * Kullanıcılar ve oturum imzası. Veri belgesinden ayrı "auth" belgesinde tutulur
+ * (üretimde Postgres, yerelde `.data/auth.json`): "verileri sıfırla" kullanıcıları silmez.
  *
  * Tüm kullanıcılar aynı yetkidedir (süper yönetici): her işlemi yapabilir,
  * kullanıcı ekleyip silebilir. Bu dosya proxy'den de kullanıldığı için
- * "server-only" içe aktarmaz; yalnız sunucuda çalışır (node:crypto, node:fs).
+ * "server-only" içe aktarmaz; yalnız sunucuda çalışır (node:crypto).
  */
-const DIR = path.join(process.cwd(), ".data");
-const FILE = path.join(DIR, "auth.json");
+const KEY = "auth";
 
 export const SESSION_COOKIE = "gt_session";
 export const SESSION_DAYS = 30;
@@ -36,30 +34,24 @@ interface AuthStore {
   users: User[];
 }
 
-function writeAuth(store: AuthStore) {
-  mkdirSync(DIR, { recursive: true });
-  const tmp = `${FILE}.tmp`;
-  writeFileSync(tmp, JSON.stringify(store, null, 1), { encoding: "utf8", mode: 0o600 });
-  renameSync(tmp, FILE);
+const newStore = (): AuthStore => ({ secret: randomBytes(32).toString("base64url"), users: [] });
+
+/** Belge yoksa (ilk açılış) rastgele imza anahtarıyla oluşturulur. */
+async function readAuth(): Promise<AuthStore> {
+  return (await readDoc<AuthStore>(KEY)) ?? updateDoc(KEY, newStore, (cur) => ({ data: cur, result: cur }));
 }
 
-function readAuth(): AuthStore {
-  if (existsSync(FILE)) return JSON.parse(readFileSync(FILE, "utf8")) as AuthStore;
-  const store: AuthStore = { secret: randomBytes(32).toString("base64url"), users: [] };
-  writeAuth(store);
-  return store;
-}
+export const listUsers = async () => (await readAuth()).users;
+export const findUser = async (id: string) => (await listUsers()).find((u) => u.id === id) ?? null;
+export const findUserByUsername = async (username: string) =>
+  (await listUsers()).find((u) => u.username === normalizeUsername(username)) ?? null;
 
-export const listUsers = () => readAuth().users;
-export const findUser = (id: string) => readAuth().users.find((u) => u.id === id) ?? null;
-export const findUserByUsername = (username: string) =>
-  readAuth().users.find((u) => u.username === normalizeUsername(username)) ?? null;
-
-export function mutateUsers<T>(fn: (users: User[]) => T): T {
-  const store = readAuth();
-  const out = fn(store.users);
-  writeAuth(store);
-  return out;
+/** Kullanıcı listesini değiştirir; `fn` dönüşü sonuç olarak gelir. Çakışmada güncel listeyle yeniden dener. */
+export function mutateUsers<T>(fn: (users: User[]) => T): Promise<T> {
+  return updateDoc(KEY, newStore, (store) => {
+    const result = fn(store.users);
+    return { data: store, result };
+  });
 }
 
 export const normalizeUsername = (s: string) => s.trim().toLocaleLowerCase("tr-TR");
@@ -81,25 +73,38 @@ export function verifyPassword(password: string, stored: string) {
   return timingSafeEqual(actual, expected);
 }
 
-/* Oturum çerezi: base64url(id.sürüm.bitiş) + "." + HMAC-SHA256 */
-const secret = () => process.env.AUTH_SECRET || readAuth().secret;
-const sign = (payload: string) => createHmac("sha256", secret()).update(payload).digest("base64url");
+/* Oturum çerezi: base64url(id.sürüm.bitiş) + "." + HMAC-SHA256.
+   İmza anahtarı: AUTH_SECRET ortam değişkeni, yoksa auth belgesindeki rastgele anahtar. */
+let cachedSecret: string | null = null;
+async function secret() {
+  if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET;
+  cachedSecret ??= (await readAuth()).secret;
+  return cachedSecret;
+}
+const sign = async (payload: string) => createHmac("sha256", await secret()).update(payload).digest("base64url");
 
-export function createSessionToken(user: User) {
+export async function createSessionToken(user: User) {
   const exp = Date.now() + SESSION_DAYS * 86_400_000;
   const payload = Buffer.from(`${user.id}.${user.sessionVersion}.${exp}`).toString("base64url");
-  return { token: `${payload}.${sign(payload)}`, expires: new Date(exp) };
+  return { token: `${payload}.${await sign(payload)}`, expires: new Date(exp) };
 }
 
-/** Geçerli oturumun kullanıcısı; imza, süre, sürüm ve kullanıcının hâlâ var olması denetlenir. */
-export function userFromToken(token: string | undefined | null): User | null {
+/** Yalnız imza ve süre (veritabanına gitmez) — proxy'deki hızlı kapı için. */
+export async function verifyToken(token: string | undefined | null): Promise<{ id: string; version: number } | null> {
   if (!token) return null;
   const [payload, sig] = token.split(".");
   if (!payload || !sig) return null;
-  const a = Buffer.from(sig), b = Buffer.from(sign(payload));
+  const a = Buffer.from(sig), b = Buffer.from(await sign(payload));
   if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
   const [id, version, exp] = Buffer.from(payload, "base64url").toString().split(".");
-  if (!id || Number(exp) < Date.now()) return null;
-  const user = findUser(id);
-  return user && user.sessionVersion === Number(version) ? user : null;
+  if (!id || !(Number(exp) > Date.now())) return null;
+  return { id, version: Number(version) };
+}
+
+/** Geçerli oturumun kullanıcısı: imza ve süreye ek olarak kullanıcının hâlâ var olması ve şifre sürümü denetlenir. */
+export async function userFromToken(token: string | undefined | null): Promise<User | null> {
+  const claims = await verifyToken(token);
+  if (!claims) return null;
+  const user = await findUser(claims.id);
+  return user && user.sessionVersion === claims.version ? user : null;
 }

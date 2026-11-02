@@ -14,7 +14,7 @@ export const instant = false;
 
 export default async function UsersPage() {
   const me = await requireUser();
-  const users = listUsers().map(publicUser).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+  const users = (await listUsers()).map(publicUser).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
   const nameOf = (id: string | null) => users.find((u) => u.id === id)?.name ?? null;
 
   return (

@@ -83,6 +83,12 @@ Referans projeler (altyapı + arayüz):
   açık ücretsiz lisans), 720p, sessiz, ≤12 sn, toplam ~4 MB. `VideoBackdrop` sırayla oynatır, yumuşak geçiş;
   yalnız oynayan + sıradaki yüklenir; "hareketi azalt"ta durağan kare. Örtü hafif (kullanıcı "daha belli olsun" dedi),
   sol taraftaki açıklama metinleri kullanıcı isteğiyle kaldırıldı; kart ortada. Proxy eşleşmesinden mp4/webm hariç.
+- **Veri deposu Postgres'e hazır (Vercel için):** `src/lib/data/store.ts` — `DATABASE_URL`/`POSTGRES_URL` varsa
+  Neon Postgres `app_docs` tablosu (anahtar → jsonb belge: `dataset`, `auth`), yoksa yerelde `.data/*.json`.
+  Her yazma sürüm denetimli (`updateDoc`: çakışırsa güncel veriyle 6 kez yeniden dener) → eşzamanlı kayıt kaybolmaz.
+  `repo.mutate`, `resetStore`, `auth/core` fonksiyonları artık async. Proxy yalnız imza+süre bakar (DB'ye gitmez).
+  İlk yükleme: `DATABASE_URL=... node scripts/db-seed.mjs` (yalnız yoksa yazar; yerel admin hesabını taşır,
+  böylece sitede ilk-yönetici ekranı herkese açık kalmaz). Not: tablolar normalize değil — ileride Prisma ile bölünebilir.
 - **Çıkış sağ üstte:** üst çubukta kullanıcı menüsü (`user-menu.tsx`: ad, Kullanıcılar, Şifremi değiştir, Çıkış).
   Sol menünün altındaki kullanıcı alanı kaldırıldı. Şifre alanlarında göz düğmesi (`PasswordInput`).
 
@@ -123,5 +129,6 @@ Ardından: veritabanı (Prisma + PostgreSQL, crm-genel ile aynı; yalnız `repo.
 - Oturum okuyan kodda `Date.now()` öncesi `connection()` gerekli (dev "unstable value" hatası).
 - React form eylemi bittiğinde kontrolsüz alanları sıfırlar → giriş formunda kullanıcı adı kontrollü.
 - Server component'ten client component'e simge **bileşeni** geçilmez; öğe (`<KeyRound />`) geçilir.
+- Yerel dev `.env.local`'de `DATABASE_URL` olsa da dosya kullanır; Postgres yalnız `VERCEL=1` ya da `USE_DATABASE=1` iken. Yerelden üretim DB'ye bilerek bağlanmak: `USE_DATABASE=1 pnpm dev`.
 - Üretimde `AUTH_SECRET` ortam değişkeni verilebilir; yoksa `auth.json` içindeki rastgele anahtar kullanılır.
 - GitHub: https://github.com/BurakGoturler/guzel-ticaret-crm (özel repo)

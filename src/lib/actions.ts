@@ -3,6 +3,7 @@
 import { refresh } from "next/cache";
 import { getCurrentUser } from "@/lib/auth/session";
 import { KURUM_ID, mutate, newId, resetStore } from "@/lib/data/repo";
+import { ConflictError } from "@/lib/data/store";
 import { contractFor, monthOf, seasonOfMonth } from "@/lib/domain/calc";
 import type { Customer, Dataset, Fire, FirmId, Product } from "@/lib/domain/types";
 import { fmtKg } from "@/lib/format";
@@ -44,7 +45,7 @@ async function run(fn: (ds: Dataset) => ActionState): Promise<ActionState> {
   if (!(await getCurrentUser())) return fail(NO_SESSION);
   try {
     let result: ActionState = fail("İşlem yapılmadı");
-    mutate((ds) => {
+    await mutate((ds) => {
       result = fn(ds);
       if (!result.ok) throw new Abort(result);
     });
@@ -52,6 +53,7 @@ async function run(fn: (ds: Dataset) => ActionState): Promise<ActionState> {
     return result;
   } catch (e) {
     if (e instanceof Abort) return e.state;
+    if (e instanceof ConflictError) return fail(e.message);
     console.error(e);
     return fail("Kayıt sırasında bir hata oluştu.");
   }
@@ -414,7 +416,7 @@ export async function resetData(_: ActionState, fd: FormData): Promise<ActionSta
   if (!(await getCurrentUser())) return fail(NO_SESSION);
   if (fd.get("confirm") !== "SIFIRLA") return fail("Onay için kutuya SIFIRLA yazın.");
   try {
-    resetStore();
+    await resetStore();
   } catch (e) {
     console.error(e);
     return fail("Sıfırlanamadı.");

@@ -18,7 +18,7 @@ export async function requireUser(): Promise<User> {
 }
 
 export async function startSession(user: User) {
-  const { token, expires } = createSessionToken(user);
+  const { token, expires } = await createSessionToken(user);
   (await cookies()).set(SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
