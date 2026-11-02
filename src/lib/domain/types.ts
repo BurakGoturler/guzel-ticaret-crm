@@ -48,8 +48,24 @@ export interface Assignment {
   firmId: FirmId;
 }
 
+/** Satışı kim yaptı: sözleşmeli kuruma teslim (firma faturası) ya da Halis'in kendi satışı. */
+export type Seller = "kurum" | "halis";
+
+export interface Customer {
+  id: string;
+  name: string;
+  kind: "kurum" | "esnaf" | "bireysel";
+  il: string | null;
+  ilce: string | null;
+  phone: string | null;
+  note: string | null;
+}
+
 export interface Delivery {
+  id: string;
   date: string;
+  seller: Seller;
+  customerId: string | null;
   productId: string;
   contractId: string;
   kg: number;
@@ -65,6 +81,7 @@ export interface PurchasePrice {
 }
 
 export interface Fire {
+  id: string;
   month: string;
   productId: string;
   kg: number;
@@ -74,6 +91,7 @@ export interface Fire {
 }
 
 export interface Expense {
+  id: string;
   month: string;
   label: string;
   amount: number;
@@ -91,6 +109,7 @@ export interface Dataset {
   firms: Firm[];
   seasons: Season[];
   products: Product[];
+  customers: Customer[];
   contracts: Contract[];
   assignments: Assignment[];
   deliveries: Delivery[];

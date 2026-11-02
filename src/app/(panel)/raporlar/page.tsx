@@ -1,13 +1,15 @@
+import { Building2, CalendarDays, Carrot, FileText, TrendingUp, Wallet, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { BarsChart, ChartCard, DonutChart, LinesChart, type Series } from "@/components/charts/charts";
 import { Card, CardHeader } from "@/components/ui/card";
-import { FIRM_META } from "@/components/ui/firm";
+import { FIRM_META, HALIS_META } from "@/components/ui/firm";
 import { Kpi } from "@/components/ui/kpi";
 import { PageHeader } from "@/components/ui/page-header";
 import { cn } from "@/lib/cn";
 import { getDataset } from "@/lib/data/repo";
-import { contractProgress, firmMatrix, monthOf, monthSummary, monthsWithData, productLines, seasonOfMonth } from "@/lib/domain/calc";
-import { dayLabel, fmtCompact, fmtKg, fmtNum, fmtPct, fmtTL, fmtTL2, monthLabel, monthShort } from "@/lib/format";
+import { MonthPicker } from "@/components/ui/month-picker";
+import { contractProgress, dailyByFirm, firmMatrix, monthOf, monthSummary, monthsWithData, productLines, seasonOfMonth } from "@/lib/domain/calc";
+import { dayLabel, fmtCompact, fmtKg, fmtNum, fmtPct, fmtTL, fmtTL2, monthLabel, monthShort, todayISO } from "@/lib/format";
 
 // Kategorik sıra (dataviz referans paleti) — firma renkleri (1: mavi, 2: turuncu) hariç tutulur
 const CAT = ["#6250d6", "#eda100", "#1baf7a", "#e87ba4", "#008300", "#e34948"] as const;
@@ -15,16 +17,37 @@ const FIRMS: Series[] = [
   { key: "ecrin", label: FIRM_META.ecrin.name, color: FIRM_META.ecrin.color },
   { key: "guzel", label: FIRM_META.guzel.name, color: FIRM_META.guzel.color },
 ];
+const DAILY: Series[] = [...FIRMS, { key: "halis", label: HALIS_META.name, color: HALIS_META.color }];
 
-// Ay / dönem seçimi URL parametresinden gelir; sayfa isteğe göre üretilir.
+// Güncel veri istek anında okunur (.data/db.json).
 export const instant = false;
 
-export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ donem?: string }> }) {
-  const ds = getDataset();
-  const all = monthsWithData(ds);
-  const seasonsWithData = ds.seasons.filter((s) => all.some((m) => seasonOfMonth(ds, m)?.id === s.id));
-  const { donem } = await searchParams;
+const TABS: { id: string; label: string; icon: LucideIcon; desc: string }[] = [
+  { id: "ozet", label: "Ay özeti", icon: CalendarDays, desc: "Seçili ayın cirosu, kârı, kesintileri ve günlük sevkiyatı" },
+  { id: "kar", label: "Satış & kâr", icon: TrendingUp, desc: "Dönem boyunca ay ay satış, alış, brüt ve net kâr" },
+  { id: "firmalar", label: "Firmalar", icon: Building2, desc: "Ecrin ve Güzel'in cirosu, payı ve hangi ürünü hangi ay sattığı" },
+  { id: "urunler", label: "Ürünler & fiyat", icon: Carrot, desc: "Ürün bazlı ciro, satış ve alış fiyatları" },
+  { id: "sozlesmeler", label: "Sözleşmeler", icon: FileText, desc: "Sözleşme kilolarının ne kadarı teslim edildi" },
+  { id: "giderler", label: "Giderler", icon: Wallet, desc: "Masraf, kesinti ve fire dağılımı" },
+];
+
+export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ donem?: string; ay?: string; sekme?: string }> }) {
+  const ds = await getDataset();
+  const all = monthsWithData(ds, monthOf(todayISO()));
+  const withSales = [...new Set(ds.deliveries.map((d) => monthOf(d.date)))].sort();
+  const seasonsWithData = ds.seasons.filter((s) => withSales.some((m) => seasonOfMonth(ds, m)?.id === s.id));
+  const { donem, ay, sekme } = await searchParams;
+  const tab = TABS.find((t) => t.id === sekme) ?? TABS[0]!;
   const season = seasonsWithData.find((s) => s.id === donem) ?? seasonsWithData[seasonsWithData.length - 1]!;
+
+  /* 0 · ay özeti (ana sayfadan taşındı) */
+  const month = ay && all.includes(ay) ? ay : (withSales[withSales.length - 1] ?? all[all.length - 1]!);
+  const ms = monthSummary(ds, month);
+  const prevMonth = all[all.indexOf(month) - 1];
+  const ps = prevMonth ? monthSummary(ds, prevMonth) : null;
+  const daily = dailyByFirm(ds, month);
+  const delta = (cur: number, old: number | undefined) =>
+    old ? <span className={cur >= old ? "text-success" : "text-danger"}>{cur >= old ? "▲" : "▼"} {fmtPct(Math.abs(cur - old) / Math.abs(old))} önceki aya göre</span> : undefined;
   const months = all.filter((m) => seasonOfMonth(ds, m)?.id === season.id);
   const sums = months.map((m) => monthSummary(ds, m));
 
@@ -94,7 +117,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
   /* 9 · dönem boyu günlük sevkiyat */
   const dayMap = new Map<string, { date: string; ecrin: number; guzel: number }>();
   for (const d of ds.deliveries) {
-    if (!months.includes(monthOf(d.date)) || d.note?.startsWith("Mayıs ay toplamı")) continue; // günlük dökümü olmayan ay toplamı grafiği bozmasın
+    if (!months.includes(monthOf(d.date)) || d.seller === "halis" || d.note?.startsWith("Mayıs ay toplamı")) continue; // günlük dökümü olmayan ay toplamı grafiği bozmasın
     const firm = ds.assignments.find((a) => a.month === monthOf(d.date) && a.productId === d.productId)?.firmId;
     if (!firm) continue;
     const r = dayMap.get(d.date) ?? { date: d.date, ecrin: 0, guzel: 0 };
@@ -113,24 +136,101 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
   /* 11 · firma matrisi */
   const matrix = firmMatrix(ds, months);
 
+  const href = (o: { sekme?: string; ay?: string; donem?: string }) =>
+    `/raporlar?sekme=${o.sekme ?? tab.id}&ay=${o.ay ?? month}&donem=${o.donem ?? season.id}`;
+  const empty = !months.length;
+
   return (
     <>
-      <PageHeader
-        title="Raporlar"
-        subtitle={`${season.name} · ${months.length} ay · ${monthLabel(months[0]!)} – ${monthLabel(months[months.length - 1]!)}`}
-        action={
+      <PageHeader title="Raporlar" subtitle="Konuyu seçin; her sekmede yalnız o konunun grafikleri var" />
+
+      {/* Kategori sekmeleri */}
+      <nav aria-label="Rapor kategorileri" className="-mx-1 mb-5 flex gap-2 overflow-x-auto px-1 pb-1">
+        {TABS.map((t) => {
+          const on = t.id === tab.id;
+          const Icon = t.icon;
+          return (
+            <Link
+              key={t.id}
+              href={href({ sekme: t.id })}
+              aria-current={on ? "page" : undefined}
+              className={cn(
+                "flex shrink-0 items-center gap-2 rounded-lg border px-3.5 py-2 text-[13px] transition-colors",
+                on ? "border-brand bg-brand font-medium text-white" : "border-hairline bg-surface text-body hover:border-hairline-strong hover:text-ink",
+              )}
+            >
+              <Icon className="size-4" aria-hidden />
+              {t.label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-lg font-semibold text-ink">{tab.id === "ozet" ? `${tab.label} · ${monthLabel(month)}` : `${tab.label} · ${season.name}`}</h2>
+          <p className="text-[13px] text-muted">{tab.desc}{tab.id !== "ozet" && !empty ? ` · ${monthLabel(months[0]!)} – ${monthLabel(months[months.length - 1]!)}` : ""}</p>
+        </div>
+        {tab.id === "ozet" ? (
+          <MonthPicker months={all} current={month} basePath="/raporlar" extra={`&sekme=ozet&donem=${season.id}`} />
+        ) : (
           seasonsWithData.length > 1 && (
             <div className="flex gap-1 rounded-lg border border-hairline bg-surface p-1">
               {seasonsWithData.map((s) => (
-                <Link key={s.id} href={`/raporlar?donem=${s.id}`} className={cn("rounded-md px-3 py-1.5 text-[13px]", s.id === season.id ? "bg-brand font-medium text-white" : "text-body hover:bg-surface-alt")}>
+                <Link key={s.id} href={href({ donem: s.id })} className={cn("rounded-md px-3 py-1.5 text-[13px]", s.id === season.id ? "bg-brand font-medium text-white" : "text-body hover:bg-surface-alt")}>
                   {s.name}
                 </Link>
               ))}
             </div>
           )
-        }
-      />
+        )}
+      </div>
 
+      {tab.id === "ozet" && (
+        <>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+          <Kpi label="Satış cirosu" value={fmtTL(ms.revenue)} hint={<>Kuruma kesilen fatura, KDV hariç{ps ? <><br />{delta(ms.revenue, ps.revenue)}</> : null}</>} />
+          <Kpi label="Alış maliyeti" value={fmtTL(ms.cost)} hint="Üreticiye ödenen: kg × alış fiyatı" />
+          <Kpi label="Brüt kâr" value={fmtTL(ms.grossProfit)} hint="Satış − alış, kesintilerden önce" />
+          <Kpi label="Kesinti & masraf" value={fmtTL(ms.deductions)} hint="Stopaj, peşin vergi, fire, Halis, elemanlar…" />
+          <Kpi label="Net kâr" value={fmtTL(ms.netProfit)} tone={ms.netProfit < 0 ? "negative" : "default"} hint={<>Cebe kalan · Halis kârı dahil{ps ? <><br />{delta(ms.netProfit, ps.netProfit)}</> : null}</>} />
+          <Kpi label="Teslim edilen" value={fmtKg(ms.kg)} hint={`${daily.length} sevkiyat günü${ms.halis.kg ? ` · Halis ${fmtKg(ms.halis.kg)}` : ""}`} />
+        </div>
+
+        <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_1.4fr]">
+          <Card>
+            <CardHeader title="Kârdan net kâra" subtitle="Excel'deki kesinti sütununun hesaplanmış hâli" />
+            <ul className="mt-3 px-5 pb-4 text-[13px]">
+              <BridgeRow label="Brüt kâr (kuruma teslim)" value={ms.grossProfit} strong />
+              {ms.halis.kg > 0 && <BridgeRow label={`Halis satış kârı (${fmtKg(ms.halis.kg)})`} value={ms.halisProfit} />}
+              <BridgeRow label={`Fire / kasa-dara (${fmtKg(ms.fireKg)})`} value={-ms.fireLoss} />
+              <BridgeRow label={`Stopaj (%${(ds.settings.stopajRate * 100).toLocaleString("tr-TR")})`} value={-ms.stopaj} />
+              <BridgeRow label={`Peşin kesilen vergi (%${(ds.settings.advanceTaxRate * 100).toLocaleString("tr-TR")})`} value={-ms.advanceTax} />
+              {ms.expenses.map((e, i) => <BridgeRow key={`${e.label}-${i}`} label={e.label} value={-e.amount} />)}
+              <BridgeRow label="Net kâr" value={ms.netProfit} strong total />
+            </ul>
+            <p className="border-t border-hairline px-5 py-3 text-xs text-muted">
+              KDV (%{(ds.settings.kdvRate * 100).toLocaleString("tr-TR")}) faturaya eklenir, kârdan düşülmez: {fmtTL(ms.kdv)}. Oranlar <Link href="/ayarlar" className="underline">Ayarlar</Link>&apos;dan değişir.
+            </p>
+          </Card>
+
+          <ChartCard
+            title="Günlük sevkiyat"
+            subtitle={`${monthLabel(month)} · firmaya göre kg`}
+            series={DAILY}
+            table={{
+              columns: ["Tarih", "Ecrin (kg)", "Güzel (kg)", "Halis (kg)", "Toplam"],
+              rows: daily.map((d) => [dayLabel(d.date), fmtNum(d.ecrin), fmtNum(d.guzel), fmtNum(d.halis), fmtNum(d.ecrin + d.guzel + d.halis + d.diger)]),
+            }}
+          >
+            <BarsChart data={daily} xKey="date" axis="day" format="kg" stacked series={DAILY} />
+          </ChartCard>
+        </div>
+        </>
+      )}
+
+      {tab.id === "kar" && (
+        <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
         <Kpi label="Dönem cirosu" value={fmtTL(revenue)} />
         <Kpi label="Alış maliyeti" value={fmtTL(tot((x) => x.cost))} />
@@ -139,44 +239,15 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
         <Kpi label="Net kâr" value={fmtTL(net)} hint={`Net marj ${fmtPct(revenue ? net / revenue : 0)}`} />
         <Kpi label="Teslim edilen" value={fmtKg(tot((x) => x.kg))} />
       </div>
-
-      <div className="mt-6 grid gap-4 xl:grid-cols-2">
-        <ChartCard
+      <div className="mt-4 grid gap-4 xl:grid-cols-2">
+        <div className="xl:col-span-2"><ChartCard
           title="Aylık satış, alış ve brüt kâr"
           subtitle="İki firma toplamı"
           series={[{ key: "sale", label: "Satış", color: "var(--series-sale)" }, { key: "cost", label: "Alış", color: "var(--series-cost)" }, { key: "profit", label: "Brüt kâr", color: "var(--series-profit)" }]}
           table={{ columns: ["Ay", "Satış", "Alış", "Brüt kâr"], rows: pnl.map((r) => [monthLabel(r.month), fmtTL(r.sale), fmtTL(r.cost), fmtTL(r.profit)]) }}
         >
           <BarsChart data={pnl} xKey="month" series={[{ key: "sale", label: "Satış", color: "var(--series-sale)" }, { key: "cost", label: "Alış", color: "var(--series-cost)" }, { key: "profit", label: "Brüt kâr", color: "var(--series-profit)" }]} />
-        </ChartCard>
-
-        <ChartCard
-          title="Firmaya göre aylık ciro"
-          subtitle="Ürünler ay ay firma değiştirdiği için pay da değişir"
-          series={FIRMS}
-          table={{ columns: ["Ay", "Ecrin", "Güzel", "Toplam"], rows: byFirm.map((r) => [monthLabel(r.month), fmtTL(r.ecrin), fmtTL(r.guzel), fmtTL(r.ecrin + r.guzel)]) }}
-        >
-          <BarsChart data={byFirm} xKey="month" series={FIRMS} stacked />
-        </ChartCard>
-
-        <ChartCard
-          title="Firma ciro payı"
-          subtitle="Dönem toplamı"
-          table={{ columns: ["Firma", "Ciro", "Pay"], rows: firmTotals.map((f) => [f.label, fmtTL(f.value), fmtPct(revenue ? f.value / revenue : 0)]) }}
-          height={240}
-        >
-          <DonutChart data={firmTotals} centerLabel="₺ ciro" />
-        </ChartCard>
-
-        <ChartCard
-          title="Masraf ve kesinti dağılımı"
-          subtitle="Brüt kârdan düşülen kalemler"
-          table={{ columns: ["Kalem", "Tutar"], rows: expRows.map((e) => [e.label, fmtTL(e.value)]) }}
-          height={240}
-        >
-          <DonutChart data={expRows} centerLabel="₺ kesinti" />
-        </ChartCard>
-
+        </ChartCard></div>
         <ChartCard
           title="Aylık net kâr"
           subtitle="Kesintiler ve masraflar düşüldükten sonra"
@@ -185,7 +256,6 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
         >
           <BarsChart data={netRows} xKey="month" series={[{ key: "net", label: "Net kâr", color: "var(--series-profit)" }]} />
         </ChartCard>
-
         <ChartCard
           title="Net kâr marjı"
           subtitle="Net kâr ÷ satış cirosu"
@@ -194,68 +264,29 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
         >
           <LinesChart data={netRows} xKey="month" format="pct" series={[{ key: "margin", label: "Net marj", color: "var(--series-sale)" }]} />
         </ChartCard>
+      </div>
+        </>
+      )}
 
+      {tab.id === "firmalar" && (
+      <div className="grid gap-4 xl:grid-cols-2">
         <ChartCard
-          title="Ürün bazlı ciro"
-          subtitle="Dönem toplamı, satan firmaya göre"
+          title="Firmaya göre aylık ciro"
+          subtitle="Ürünler ay ay firma değiştirdiği için pay da değişir"
           series={FIRMS}
-          table={{ columns: ["Ürün", "Ecrin", "Güzel", "Toplam"], rows: prodRows.map((r) => [r.name, fmtTL(r.ecrin), fmtTL(r.guzel), fmtTL(r.ecrin + r.guzel)]) }}
-          height={Math.max(240, prodRows.length * 30)}
+          table={{ columns: ["Ay", "Ecrin", "Güzel", "Toplam"], rows: byFirm.map((r) => [monthLabel(r.month), fmtTL(r.ecrin), fmtTL(r.guzel), fmtTL(r.ecrin + r.guzel)]) }}
         >
-          <BarsChart data={prodRows} xKey="name" axis="text" series={FIRMS} stacked horizontal />
+          <BarsChart data={byFirm} xKey="month" series={FIRMS} stacked />
         </ChartCard>
-
         <ChartCard
-          title="Sözleşme gerçekleşmesi"
-          subtitle="Teslim edilen ve kalan kg"
-          series={[{ key: "delivered", label: "Teslim edilen", color: "var(--brand)" }, { key: "remaining", label: "Kalan", color: "var(--hairline-strong)" }]}
-          table={{ columns: ["Ürün", "Sözleşme", "Teslim", "Kalan", "%"], rows: progress.map((c) => [c.productName, fmtNum(c.contractKg), fmtNum(c.delivered), fmtNum(c.remaining), fmtPct(c.ratio)]) }}
-          height={Math.max(240, progRows.length * 30)}
+          title="Firma ciro payı"
+          subtitle="Dönem toplamı"
+          table={{ columns: ["Firma", "Ciro", "Pay"], rows: firmTotals.map((f) => [f.label, fmtTL(f.value), fmtPct(revenue ? f.value / revenue : 0)]) }}
+          height={240}
         >
-          <BarsChart data={progRows} xKey="name" axis="text" format="kg" stacked horizontal
-            series={[{ key: "delivered", label: "Teslim edilen", color: "var(--brand)" }, { key: "remaining", label: "Kalan", color: "var(--hairline-strong)" }]} />
+          <DonutChart data={firmTotals} centerLabel="₺ ciro" />
         </ChartCard>
-
-        <ChartCard
-          title="Kümülatif gerçekleşme"
-          subtitle="En büyük 5 sözleşme · ay sonu itibarıyla teslim oranı"
-          series={cumSeries}
-          table={{ columns: ["Ay", ...top.map((c) => c.productName)], rows: cumRows.map((r) => [monthLabel(String(r.month)), ...top.map((c) => fmtPct(Number(r[c.contractId])))]) }}
-        >
-          <LinesChart data={cumRows} xKey="month" format="pct" series={cumSeries} />
-        </ChartCard>
-
-        <ChartCard
-          title="Satış ve alış fiyatı"
-          subtitle="Dönem ağırlıklı ortalaması, ₺/kg"
-          series={[{ key: "sale", label: "Satış ₺/kg", color: "var(--series-sale)" }, { key: "cost", label: "Alış ₺/kg", color: "var(--series-cost)" }]}
-          table={{ columns: ["Ürün", "Satış ₺/kg", "Alış ₺/kg", "Fark"], rows: priceRows.map((r) => [r.name, fmtTL2(r.sale), fmtTL2(r.cost), fmtTL2(r.sale - r.cost)]) }}
-          height={Math.max(260, priceRows.length * 34)}
-        >
-          <BarsChart data={priceRows} xKey="name" axis="text" horizontal
-            series={[{ key: "sale", label: "Satış ₺/kg", color: "var(--series-sale)" }, { key: "cost", label: "Alış ₺/kg", color: "var(--series-cost)" }]} />
-        </ChartCard>
-
-        <ChartCard
-          title="Günlük sevkiyat"
-          subtitle="Dönem boyunca, firmaya göre kg · Mayıs hariç (Excel'de günlük döküm yok)"
-          series={FIRMS}
-          className="xl:col-span-2"
-          table={{ columns: ["Tarih", "Ecrin", "Güzel", "Toplam"], rows: dayRows.map((r) => [`${dayLabel(r.date)}.${r.date.slice(0, 4)}`, fmtNum(r.ecrin), fmtNum(r.guzel), fmtNum(r.ecrin + r.guzel)]) }}
-        >
-          <LinesChart data={dayRows} xKey="date" axis="day" format="kg" area series={FIRMS} />
-        </ChartCard>
-
-        <ChartCard
-          title="Fire ve kasa-dara kaybı"
-          subtitle="Ürüne göre, ₺"
-          table={{ columns: ["Ürün", "kg", "Kayıp"], rows: fireRows.map((r) => [r.name, fmtNum(r.kg), fmtTL(r.loss)]) }}
-          height={Math.max(220, fireRows.length * 30)}
-        >
-          <BarsChart data={fireRows} xKey="name" axis="text" horizontal series={[{ key: "loss", label: "Kayıp", color: "var(--series-loss)" }]} />
-        </ChartCard>
-
-        <Card className="flex flex-col">
+        <div className="xl:col-span-2"><Card className="flex flex-col">
           <CardHeader title="Hangi ay hangi ürünü kim sattı" subtitle="Hücre rengi firma, değer o ay teslim edilen kg" />
           <div className="mt-3 overflow-x-auto px-5 pb-4">
             <table className="w-full min-w-[520px] border-separate border-spacing-[3px] text-xs">
@@ -292,8 +323,95 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
               ))}
             </div>
           </div>
-        </Card>
+        </Card></div>
+        <div className="xl:col-span-2"><ChartCard
+          title="Günlük sevkiyat"
+          subtitle="Dönem boyunca, firmaya göre kg · Mayıs hariç (Excel'de günlük döküm yok)"
+          series={FIRMS}
+         
+          table={{ columns: ["Tarih", "Ecrin", "Güzel", "Toplam"], rows: dayRows.map((r) => [`${dayLabel(r.date)}.${r.date.slice(0, 4)}`, fmtNum(r.ecrin), fmtNum(r.guzel), fmtNum(r.ecrin + r.guzel)]) }}
+        >
+          <LinesChart data={dayRows} xKey="date" axis="day" format="kg" area series={FIRMS} />
+        </ChartCard></div>
       </div>
+      )}
+
+      {tab.id === "urunler" && (
+      <div className="grid gap-4 xl:grid-cols-2">
+        <ChartCard
+          title="Ürün bazlı ciro"
+          subtitle="Dönem toplamı, satan firmaya göre"
+          series={FIRMS}
+          table={{ columns: ["Ürün", "Ecrin", "Güzel", "Toplam"], rows: prodRows.map((r) => [r.name, fmtTL(r.ecrin), fmtTL(r.guzel), fmtTL(r.ecrin + r.guzel)]) }}
+          height={Math.max(240, prodRows.length * 30)}
+        >
+          <BarsChart data={prodRows} xKey="name" axis="text" series={FIRMS} stacked horizontal />
+        </ChartCard>
+        <ChartCard
+          title="Satış ve alış fiyatı"
+          subtitle="Dönem ağırlıklı ortalaması, ₺/kg"
+          series={[{ key: "sale", label: "Satış ₺/kg", color: "var(--series-sale)" }, { key: "cost", label: "Alış ₺/kg", color: "var(--series-cost)" }]}
+          table={{ columns: ["Ürün", "Satış ₺/kg", "Alış ₺/kg", "Fark"], rows: priceRows.map((r) => [r.name, fmtTL2(r.sale), fmtTL2(r.cost), fmtTL2(r.sale - r.cost)]) }}
+          height={Math.max(260, priceRows.length * 34)}
+        >
+          <BarsChart data={priceRows} xKey="name" axis="text" horizontal
+            series={[{ key: "sale", label: "Satış ₺/kg", color: "var(--series-sale)" }, { key: "cost", label: "Alış ₺/kg", color: "var(--series-cost)" }]} />
+        </ChartCard>
+      </div>
+      )}
+
+      {tab.id === "sozlesmeler" && (
+      <div className="grid gap-4 xl:grid-cols-2">
+        <ChartCard
+          title="Sözleşme gerçekleşmesi"
+          subtitle="Teslim edilen ve kalan kg"
+          series={[{ key: "delivered", label: "Teslim edilen", color: "var(--brand)" }, { key: "remaining", label: "Kalan", color: "var(--hairline-strong)" }]}
+          table={{ columns: ["Ürün", "Sözleşme", "Teslim", "Kalan", "%"], rows: progress.map((c) => [c.productName, fmtNum(c.contractKg), fmtNum(c.delivered), fmtNum(c.remaining), fmtPct(c.ratio)]) }}
+          height={Math.max(240, progRows.length * 30)}
+        >
+          <BarsChart data={progRows} xKey="name" axis="text" format="kg" stacked horizontal
+            series={[{ key: "delivered", label: "Teslim edilen", color: "var(--brand)" }, { key: "remaining", label: "Kalan", color: "var(--hairline-strong)" }]} />
+        </ChartCard>
+        <ChartCard
+          title="Kümülatif gerçekleşme"
+          subtitle="En büyük 5 sözleşme · ay sonu itibarıyla teslim oranı"
+          series={cumSeries}
+          table={{ columns: ["Ay", ...top.map((c) => c.productName)], rows: cumRows.map((r) => [monthLabel(String(r.month)), ...top.map((c) => fmtPct(Number(r[c.contractId])))]) }}
+        >
+          <LinesChart data={cumRows} xKey="month" format="pct" series={cumSeries} />
+        </ChartCard>
+      </div>
+      )}
+
+      {tab.id === "giderler" && (
+      <div className="grid gap-4 xl:grid-cols-2">
+        <ChartCard
+          title="Masraf ve kesinti dağılımı"
+          subtitle="Brüt kârdan düşülen kalemler"
+          table={{ columns: ["Kalem", "Tutar"], rows: expRows.map((e) => [e.label, fmtTL(e.value)]) }}
+          height={240}
+        >
+          <DonutChart data={expRows} centerLabel="₺ kesinti" />
+        </ChartCard>
+        <ChartCard
+          title="Fire ve kasa-dara kaybı"
+          subtitle="Ürüne göre, ₺"
+          table={{ columns: ["Ürün", "kg", "Kayıp"], rows: fireRows.map((r) => [r.name, fmtNum(r.kg), fmtTL(r.loss)]) }}
+          height={Math.max(220, fireRows.length * 30)}
+        >
+          <BarsChart data={fireRows} xKey="name" axis="text" horizontal series={[{ key: "loss", label: "Kayıp", color: "var(--series-loss)" }]} />
+        </ChartCard>
+      </div>
+      )}
     </>
+  );
+}
+
+function BridgeRow({ label, value, strong, total }: { label: string; value: number; strong?: boolean; total?: boolean }) {
+  return (
+    <li className={cn("flex items-center justify-between gap-3 py-1.5", total && "mt-1 border-t border-hairline pt-2.5", strong ? "font-semibold text-ink" : "text-body")}>
+      <span>{label}</span>
+      <span className={cn("num", value < 0 && !strong && "text-muted", total && value < 0 && "text-danger")}>{fmtTL(value)}</span>
+    </li>
   );
 }

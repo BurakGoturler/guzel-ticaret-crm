@@ -15,3 +15,15 @@ const MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz"
 export const monthLabel = (m: string) => `${MONTHS[Number(m.slice(5, 7)) - 1]} ${m.slice(0, 4)}`;
 export const monthShort = (m: string) => MONTHS[Number(m.slice(5, 7)) - 1]!.slice(0, 3);
 export const dayLabel = (iso: string) => `${iso.slice(8, 10)}.${iso.slice(5, 7)}`;
+export const dateLabel = (iso: string) => `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(0, 4)}`;
+
+/** Türkiye saatiyle bugün (YYYY-MM-DD). Sunucuda istek anında çağrılmalı. */
+export const todayISO = () => new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul" });
+
+/** Seçili ay bugünün ayıysa bugün, değilse o ayın son günü — satış formunun varsayılan tarihi. */
+export function defaultDateFor(month: string, today: string) {
+  if (today.startsWith(month)) return today;
+  const [y, m] = month.split("-").map(Number) as [number, number];
+  const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return `${month}-${String(last).padStart(2, "0")}`;
+}

@@ -17,3 +17,14 @@ export function FirmBadge({ firm, className }: { firm: FirmId | null; className?
     </span>
   );
 }
+
+export const HALIS_META = { name: "Halis", dot: "bg-halis", soft: "bg-halis-soft", text: "text-halis", color: "var(--halis)" };
+
+export function HalisBadge({ className }: { className?: string }) {
+  return (
+    <span className={cn("inline-flex items-center gap-1.5 rounded-full bg-halis-soft px-2 py-0.5 text-xs font-medium text-ink", className)}>
+      <span className="size-2 rounded-full bg-halis" aria-hidden />
+      Halis
+    </span>
+  );
+}

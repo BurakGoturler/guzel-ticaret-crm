@@ -12,7 +12,7 @@ Excel'i yeniden aktarmak için: `python scripts/excel-aktar.py "C:/Users/burak/D
 | kasım / aralık 2026 kışlık | Kış sözleşmesi (henüz tek kayıt yok) | Sözleşme + alış fiyatı aktarıldı |
 | TAHMİNİ GENEL İCMAL | Dönem tahmini (birkaç `#REF!` hatası var) | Raporlar'da hesaplanıyor |
 | TAHMİNİ İCMA KRR | Ay ay teslimat ve gerçek kalan | Doğrulama için kullanıldı — rakamlar tutuyor |
-| halis aldıgı | Halis'in ayrı aldığı patates/soğan | Sonraki adım |
+| halis aldıgı | Halis'in ayrı aldığı patates/soğan | Anlamı sorulacak; Halis satışları `/halis`'ten girilir |
 | ocak … mayıs 2027 | Boş | — |
 
 ## Ay sayfası satır düzeni (ekim 2026 örneği)
@@ -50,4 +50,5 @@ Excel'i yeniden aktarmak için: `python scripts/excel-aktar.py "C:/Users/burak/D
 - [ ] **Kış sayfaları:** iki tablonun başlığı da "GÜZEL TİCARET" — biri Ecrin mi olmalı?
 - [ ] **Mayıs fire:** satır 32'de yalnız tutar var (−1.000, −800 …), kg×fiyat metni yok — aktarılmadı.
 - [ ] **KDV %1:** fatura üstüne eklenen KDV mi, yoksa damga kesintisi mi? (Excel'de "damga kesintisi" notu yanında.)
-- [ ] **Halis:** her ay 43.000 ₺ masraf + ayrı satışlar ("belirlenen fiyattan farklı satıyor") — nasıl izlenecek?
+- [x] **Halis:** satışı sözleşme kalanından düşer, fiyatı kendisi belirler, firma faturasına girmez (2 Kasım 2026). 43.000 ₺ aylık masraf Masraflar'da.
+- [ ] **halis aldıgı sayfası:** kış sözleşmesiyle aynı kg/fiyat — ne anlatıyor?

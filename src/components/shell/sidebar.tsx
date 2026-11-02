@@ -13,7 +13,7 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         <div className="grid size-9 place-items-center rounded-lg bg-white/10 text-lg font-semibold text-white">G</div>
         <div className="leading-tight">
           <div className="text-[15px] font-semibold text-white">Güzel Ticaret</div>
-          <div className="text-xs text-shell-ink/70">Ecrin · Güzel</div>
+          <div className="text-xs text-shell-ink/70">Ecrin · Güzel · Halis</div>
         </div>
       </div>
       {NAV.map((group) => (
@@ -34,14 +34,15 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               >
                 <Icon className="size-4 shrink-0" aria-hidden />
                 <span className="flex-1">{item.label}</span>
-                {!item.ready && <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] text-shell-ink/70">yakında</span>}
               </Link>
             );
           })}
         </div>
       ))}
       <div className="mt-auto px-2 text-[11px] leading-relaxed text-shell-ink/50">
-        Veri kaynağı: 2026 yaz dönemi.xlsx
+        İlk veri: 2026 yaz dönemi.xlsx
+        <br />
+        Ekrandan girilenler kaydedilir.
       </div>
     </nav>
   );

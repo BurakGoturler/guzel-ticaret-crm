@@ -1,5 +1,5 @@
 import {
-  Building2, Carrot, ChartColumnBig, FileText, LayoutDashboard, PackageX, Settings, Truck, Wallet,
+  Building2, Carrot, ChartColumnBig, FileText, HandCoins, LayoutDashboard, Map, PackageX, Settings, ShoppingBasket, Users, Wallet,
   type LucideIcon,
 } from "lucide-react";
 
@@ -7,32 +7,34 @@ export interface NavItem {
   href: string;
   label: string;
   icon: LucideIcon;
-  ready: boolean;
 }
 
 export const NAV: { title: string; items: NavItem[] }[] = [
   {
     title: "Genel",
     items: [
-      { href: "/", label: "Panel", icon: LayoutDashboard, ready: true },
-      { href: "/raporlar", label: "Raporlar", icon: ChartColumnBig, ready: true },
+      { href: "/", label: "Panel", icon: LayoutDashboard },
+      { href: "/harita", label: "Harita", icon: Map },
+      { href: "/raporlar", label: "Raporlar", icon: ChartColumnBig },
     ],
   },
   {
     title: "İş süreçleri",
     items: [
-      { href: "/sevkiyatlar", label: "Sevkiyatlar", icon: Truck, ready: false },
-      { href: "/sozlesmeler", label: "Sözleşmeler", icon: FileText, ready: false },
-      { href: "/fire-iade", label: "Fire & İade", icon: PackageX, ready: false },
-      { href: "/masraflar", label: "Masraflar", icon: Wallet, ready: false },
+      { href: "/satislar", label: "Satışlar", icon: ShoppingBasket },
+      { href: "/halis", label: "Halis", icon: HandCoins },
+      { href: "/sozlesmeler", label: "Sözleşmeler", icon: FileText },
+      { href: "/fire-iade", label: "Fire & İade", icon: PackageX },
+      { href: "/masraflar", label: "Masraflar", icon: Wallet },
     ],
   },
   {
     title: "Tanımlar",
     items: [
-      { href: "/urunler", label: "Ürünler", icon: Carrot, ready: false },
-      { href: "/firmalar", label: "Firmalar", icon: Building2, ready: false },
-      { href: "/ayarlar", label: "Ayarlar", icon: Settings, ready: false },
+      { href: "/urunler", label: "Ürünler", icon: Carrot },
+      { href: "/musteriler", label: "Müşteriler", icon: Users },
+      { href: "/firmalar", label: "Firmalar", icon: Building2 },
+      { href: "/ayarlar", label: "Ayarlar", icon: Settings },
     ],
   },
 ];

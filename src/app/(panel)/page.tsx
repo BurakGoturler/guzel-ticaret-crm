@@ -1,67 +1,100 @@
-import { ArrowRightLeft, CircleAlert } from "lucide-react";
-import { BarsChart, ChartCard } from "@/components/charts/charts";
+import { ArrowRight, ArrowRightLeft, Building2, Carrot, CircleAlert, HandCoins, History, type LucideIcon } from "lucide-react";
+import Link from "next/link";
 import { Card, CardHeader } from "@/components/ui/card";
-import { FIRM_META, FirmBadge } from "@/components/ui/firm";
-import { Kpi } from "@/components/ui/kpi";
+import { FIRM_META, HALIS_META } from "@/components/ui/firm";
 import { MonthPicker } from "@/components/ui/month-picker";
-import { PageHeader } from "@/components/ui/page-header";
-import { Progress } from "@/components/ui/progress";
+import { IconChip, type ChipTone } from "@/components/ui/icon-chip";
+import { ProductBoard } from "@/components/sales/product-board";
+import { SaleForm } from "@/components/sales/sale-form";
+import { saleOptions } from "@/components/sales/sale-options";
+import { RecentActivity } from "@/components/sales/recent-activity";
 import { cn } from "@/lib/cn";
 import { getDataset } from "@/lib/data/repo";
-import { dailyByFirm, firmOf, monthSummary, monthsWithData, productLines, seasonOfMonth } from "@/lib/domain/calc";
+import { firmOf, monthOf, monthSummary, monthsWithData, productBoard, seasonOfMonth } from "@/lib/domain/calc";
 import type { FirmId } from "@/lib/domain/types";
-import { dayLabel, fmtKg, fmtNum, fmtPct, fmtTL, fmtTL2, monthLabel } from "@/lib/format";
+import { defaultDateFor, fmtKg, fmtNum, fmtPct, fmtTL, monthLabel, todayISO } from "@/lib/format";
 
-// Ay / dönem seçimi URL parametresinden gelir; sayfa isteğe göre üretilir.
+// Güncel veri istek anında okunur (.data/db.json).
 export const instant = false;
 
 export default async function PanelPage({ searchParams }: { searchParams: Promise<{ ay?: string }> }) {
-  const ds = getDataset();
-  const months = monthsWithData(ds);
+  const ds = await getDataset();
+  const today = todayISO();
+  const months = monthsWithData(ds, monthOf(today));
   const { ay } = await searchParams;
   const month = ay && months.includes(ay) ? ay : months[months.length - 1]!;
-  const idx = months.indexOf(month);
-  const prev = idx > 0 ? months[idx - 1]! : null;
+  const prev = months[months.indexOf(month) - 1] ?? null;
 
   const s = monthSummary(ds, month);
-  const ps = prev ? monthSummary(ds, prev) : null;
   const season = seasonOfMonth(ds, month);
-  const daily = dailyByFirm(ds, month);
-  const allLines = productLines(ds, month); // atanmamış ürünler dahil
+  const board = productBoard(ds, month);
+  const options = saleOptions(ds);
+  const defaultDate = defaultDateFor(month, today);
+  const recent = ds.deliveries.filter((d) => monthOf(d.date) === month).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
 
   // Önceki aya göre firma değiştiren ürünler
   const swaps = prev
-    ? allLines
+    ? board
         .map((l) => ({ l, before: firmOf(ds, prev, l.productId) }))
         .filter(({ l, before }) => before && l.firmId && before !== l.firmId)
     : [];
 
-  const delta = (cur: number, old: number | undefined) =>
-    old ? <span className={cur >= old ? "text-success" : "text-danger"}>{cur >= old ? "▲" : "▼"} {fmtPct(Math.abs(cur - old) / old)} <span className="text-muted">önceki aya göre</span></span> : undefined;
+  const soldProducts = board.filter((l) => l.kg > 0 || l.halisKg > 0).length;
+  const totalAll = s.revenue + s.halis.revenue;
+  const categories = Object.fromEntries(ds.products.map((p) => [p.id, p.category]));
 
   return (
     <>
-      <PageHeader
-        title="Panel"
-        subtitle={<>{monthLabel(month)} · {season?.name ?? "Dönem dışı"} · iki firma birlikte</>}
-        action={<MonthPicker months={months} current={month} />}
-      />
+      {/* Başlık bandı — sayfanın tek koyu alanı; ay seçimi ve hızlı satış burada */}
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-shell via-shell-active to-[#2a4a86] px-5 pt-5 pb-5 text-white sm:px-7 sm:pt-6">
+        <div aria-hidden className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-white/5" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-32 left-1/3 size-80 rounded-full bg-white/[0.03]" />
+        <div className="relative flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-[13px] text-white/60">{season?.name ?? "Dönem dışı"}</p>
+            <h1 className="mt-0.5 text-2xl font-semibold tracking-tight">{monthLabel(month)}</h1>
+            <p className="mt-1 text-[13px] text-white/75">
+              {soldProducts ? <>{soldProducts} üründen <b className="font-semibold text-white">{fmtKg(s.kg + s.halis.kg)}</b> satıldı · {fmtTL(totalAll)}</> : <>Bu ay henüz satış yok · {board.length} ürün sözleşmede</>}
+            </p>
+          </div>
+          <MonthPicker months={months} current={month} tone="dark" />
+        </div>
 
-      {/* Birleşik özet */}
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
-        <Kpi label="Satış cirosu" value={fmtTL(s.revenue)} hint={delta(s.revenue, ps?.revenue)} />
-        <Kpi label="Alış maliyeti" value={fmtTL(s.cost)} hint={`Satışın ${fmtPct(s.revenue ? s.cost / s.revenue : 0)}`} />
-        <Kpi label="Brüt kâr" value={fmtTL(s.grossProfit)} hint={delta(s.grossProfit, ps?.grossProfit)} />
-        <Kpi label="Kesinti & masraf" value={fmtTL(s.deductions)} hint="Stopaj, vergi, fire, masraf" />
-        <Kpi label="Net kâr" value={fmtTL(s.netProfit)} tone={s.netProfit < 0 ? "negative" : "default"} hint={`Net marj ${fmtPct(s.netMargin)}`} />
-        <Kpi label="Teslim edilen" value={fmtKg(s.kg)} hint={`${daily.length} sevkiyat günü`} />
-      </div>
+        {/* Hızlı satış — Excel'de ay sayfasına kg yazmak gibi */}
+        <div className="relative mt-5 rounded-xl bg-surface p-4 text-body shadow-[0_10px_30px_-12px_rgba(0,0,0,0.45)] sm:p-5">
+          <div className="mb-3 flex items-center gap-2">
+            <span className="text-[15px] font-semibold text-ink">Satış gir</span>
+            <span className="hidden text-[13px] text-muted sm:inline">· ürün ve kiloyu yazın, gerisi kendiliğinden hesaplanır</span>
+          </div>
+          <SaleForm options={options} defaultDate={defaultDate} />
+        </div>
+      </section>
 
-      {/* İki firma yan yana */}
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+      {/* Üç bölüm: iki firma + Halis — her biri kendi renginde */}
+      <div className="mt-5 grid gap-4 md:grid-cols-3">
         {s.firms.map((f) => (
-          <FirmPanel key={f.firmId} firmId={f.firmId} totals={f} share={s.revenue ? f.revenue / s.revenue : 0} />
+          <SectionCard
+            key={f.firmId}
+            href={`/firmalar?ay=${month}#${f.firmId}`}
+            icon={Building2}
+            tone={f.firmId}
+            bar={FIRM_META[f.firmId].dot}
+            title={FIRM_META[f.firmId].name}
+            main={fmtTL(f.revenue)}
+            lines={[`${fmtKg(f.kg)} teslim`, `${f.products.length} ürün`]}
+            share={totalAll ? f.revenue / totalAll : 0}
+          />
         ))}
+        <SectionCard
+          href={`/halis?ay=${month}`}
+          icon={HandCoins}
+          tone="halis"
+          bar={HALIS_META.dot}
+          title="Halis"
+          main={fmtTL(s.halis.revenue)}
+          lines={s.halis.kg ? [`${fmtKg(s.halis.kg)} satış`, `kâr ${fmtTL(s.halis.profit)}`] : ["Bu ay satış girilmedi"]}
+          share={totalAll ? s.halis.revenue / totalAll : 0}
+        />
       </div>
 
       {(swaps.length > 0 || s.unassignedRevenue > 0) && (
@@ -72,7 +105,7 @@ export default async function PanelPage({ searchParams }: { searchParams: Promis
               <span>
                 {monthLabel(prev)} → {monthLabel(month)} firma değişimi:{" "}
                 {swaps.map(({ l, before }, i) => (
-                  <span key={l.productId}>
+                  <span key={l.contractId}>
                     {i > 0 && ", "}
                     <b className="font-medium text-ink">{l.productName}</b> {FIRM_META[before as FirmId].short} → {FIRM_META[l.firmId as FirmId].short}
                   </span>
@@ -83,178 +116,70 @@ export default async function PanelPage({ searchParams }: { searchParams: Promis
           {s.unassignedRevenue > 0 && (
             <div className="flex items-start gap-2 rounded-lg border border-warning/30 bg-warning-soft px-4 py-2.5 text-[13px] text-body">
               <CircleAlert className="mt-0.5 size-4 shrink-0 text-warning" aria-hidden />
-              Bu ay {fmtTL(s.unassignedRevenue)} tutarında satış hiçbir firmaya atanmamış ürünlerden geliyor.
+              <span>
+                Bu ay {fmtTL(s.unassignedRevenue)} tutarında satış hiçbir firmaya atanmamış ürünlerden geliyor.{" "}
+                <Link href={`/firmalar?ay=${month}`} className="font-medium text-ink underline">Firmalar&apos;dan atayın</Link>
+              </span>
             </div>
           )}
         </div>
       )}
 
-      {/* Ürün durumu */}
+      {/* Ürünler — sistemin merkezi */}
       <Card className="mt-6">
         <CardHeader
-          title="Ürün durumu"
-          subtitle="Sözleşme kalanı bir önceki aydan devreder — Excel'deki B8 satırının doğru hâli"
+          icon={<IconChip icon={Carrot} tone="success" />}
+          title="Ürünler"
+          subtitle="Her satırdan doğrudan satış girebilirsiniz · ürün adına tıklayınca tüm geçmişi açılır"
+          action={<Link href="/urunler" className="inline-flex items-center gap-1 text-[13px] text-muted hover:text-ink">Tüm ürünler <ArrowRight className="size-3.5" /></Link>}
         />
-        <div className="mt-3 overflow-x-auto">
-          <table className="w-full min-w-[980px] text-[13px]">
-            <thead>
-              <tr className="border-y border-hairline bg-surface-alt text-left text-xs text-muted">
-                <th className="px-5 py-2 font-medium">Ürün</th>
-                <th className="px-3 py-2 font-medium">Firma</th>
-                <th className="px-3 py-2 text-right font-medium">Devreden kalan</th>
-                <th className="px-3 py-2 text-right font-medium">Bu ay teslim</th>
-                <th className="px-3 py-2 text-right font-medium">Ay sonu kalan</th>
-                <th className="w-40 px-3 py-2 font-medium">Gerçekleşme</th>
-                <th className="px-3 py-2 text-right font-medium">Satış ₺/kg</th>
-                <th className="px-3 py-2 text-right font-medium">Alış ₺/kg</th>
-                <th className="px-3 py-2 text-right font-medium">Ciro</th>
-                <th className="px-5 py-2 text-right font-medium">Brüt kâr</th>
-              </tr>
-            </thead>
-            <tbody>
-              {allLines.map((l, i) => {
-                const ratio = l.contractKg ? l.deliveredToDate / l.contractKg : 0;
-                return (
-                  <tr key={l.contractId} className={cn("border-b border-hairline/70", i % 2 === 1 && "bg-zebra/60")}>
-                    <td className="px-5 py-2.5 font-medium text-ink">
-                      {l.productName}
-                      {l.contractId.startsWith("onceki") && <span className="ml-1.5 text-xs font-normal text-muted">(önceki sözleşme)</span>}
-                    </td>
-                    <td className="px-3 py-2.5"><FirmBadge firm={l.firmId} /></td>
-                    <td className="num px-3 py-2.5 text-right">{fmtNum(l.openingRemaining)}</td>
-                    <td className="num px-3 py-2.5 text-right font-medium text-ink">{fmtNum(l.kg)}</td>
-                    <td className="num px-3 py-2.5 text-right">{fmtNum(l.remaining)}</td>
-                    <td className="px-3 py-2.5">
-                      <div className="flex items-center gap-2">
-                        <Progress ratio={ratio} colorClass={l.firmId ? FIRM_META[l.firmId].dot : undefined} />
-                        <span className="num w-11 text-right text-xs text-muted">{fmtPct(ratio)}</span>
-                      </div>
-                    </td>
-                    <td className="num px-3 py-2.5 text-right">{fmtTL2(l.salePrice)}</td>
-                    <td className="num px-3 py-2.5 text-right">
-                      {l.purchasePrice === null ? <span className="text-warning">girilmedi</span> : fmtTL2(l.purchasePrice)}
-                    </td>
-                    <td className="num px-3 py-2.5 text-right text-ink">{fmtTL(l.revenue)}</td>
-                    <td className={cn("num px-5 py-2.5 text-right font-medium", l.profit < 0 ? "text-danger" : "text-ink")}>{fmtTL(l.profit)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-            <tfoot>
-              <tr className="text-[13px] font-semibold text-ink">
-                <td className="px-5 py-3" colSpan={3}>Toplam</td>
-                <td className="num px-3 py-3 text-right">{fmtNum(s.kg)}</td>
-                <td colSpan={4} />
-                <td className="num px-3 py-3 text-right">{fmtTL(s.revenue)}</td>
-                <td className="num px-5 py-3 text-right">{fmtTL(s.grossProfit)}</td>
-              </tr>
-            </tfoot>
-          </table>
+        <div className="mt-3">
+          <ProductBoard lines={board} options={options} defaultDate={defaultDate} month={month} categories={categories} />
         </div>
       </Card>
 
-      <div className="mt-6 grid gap-4 xl:grid-cols-[1.4fr_1fr]">
-        <ChartCard
-          title="Günlük sevkiyat"
-          subtitle={`${monthLabel(month)} · firmaya göre kg`}
-          series={[
-            { key: "ecrin", label: FIRM_META.ecrin.name, color: FIRM_META.ecrin.color },
-            { key: "guzel", label: FIRM_META.guzel.name, color: FIRM_META.guzel.color },
-          ]}
-          table={{
-            columns: ["Tarih", "Ecrin (kg)", "Güzel (kg)", "Toplam"],
-            rows: daily.map((d) => [dayLabel(d.date), fmtNum(d.ecrin), fmtNum(d.guzel), fmtNum(d.ecrin + d.guzel + d.diger)]),
-          }}
-        >
-          <BarsChart
-            data={daily}
-            xKey="date"
-            axis="day"
-            format="kg"
-            stacked
-            series={[
-              { key: "ecrin", label: "Ecrin", color: FIRM_META.ecrin.color },
-              { key: "guzel", label: "Güzel", color: FIRM_META.guzel.color },
-            ]}
-          />
-        </ChartCard>
-
-        {/* Kâr köprüsü — Excel'deki "KAR → STOPAJ → HALİS → … → kalan kar" sütunu */}
+      <div className="mt-6">
         <Card>
-          <CardHeader title="Kârdan net kâra" subtitle="Excel'deki kesinti sütununun hesaplanmış hâli" />
-          <ul className="mt-3 px-5 pb-4 text-[13px]">
-            <BridgeRow label="Brüt kâr" value={s.grossProfit} strong />
-            <BridgeRow label={`Fire / kasa-dara (${fmtKg(s.fireKg)})`} value={-s.fireLoss} />
-            <BridgeRow label={`Stopaj (%${(ds.settings.stopajRate * 100).toLocaleString("tr-TR")})`} value={-s.stopaj} />
-            <BridgeRow label={`Peşin kesilen vergi (%${ds.settings.advanceTaxRate * 100})`} value={-s.advanceTax} />
-            {s.expenses.map((e) => <BridgeRow key={e.label} label={e.label} value={-e.amount} />)}
-            <BridgeRow label="Net kâr" value={s.netProfit} strong total />
-          </ul>
-          <p className="border-t border-hairline px-5 py-3 text-xs text-muted">
-            KDV (%{ds.settings.kdvRate * 100}) faturaya eklenir, kârdan düşülmez: {fmtTL(s.kdv)}. Oranlar Ayarlar&apos;dan değiştirilebilecek.
-          </p>
+          <CardHeader
+            icon={<IconChip icon={History} tone="warning" />}
+            title="Son satışlar"
+            subtitle={`${monthLabel(month)} · ${fmtNum(ds.deliveries.filter((d) => monthOf(d.date) === month).length)} kayıt`}
+            action={<Link href={`/satislar?ay=${month}`} className="inline-flex items-center gap-1 text-[13px] text-muted hover:text-ink">Tümü <ArrowRight className="size-3.5" /></Link>}
+          />
+          <div className="mt-3">
+            <RecentActivity ds={ds} rows={recent} />
+          </div>
         </Card>
       </div>
+
+      <p className="mt-6 text-center text-xs text-muted">
+        Kâr, kesinti ve günlük sevkiyat ayrıntıları <Link href={`/raporlar?ay=${month}`} className="font-medium text-ink underline">Raporlar</Link>&apos;da.
+      </p>
     </>
   );
 }
 
-function BridgeRow({ label, value, strong, total }: { label: string; value: number; strong?: boolean; total?: boolean }) {
-  return (
-    <li className={cn("flex items-center justify-between gap-3 py-1.5", total && "mt-1 border-t border-hairline pt-2.5", strong ? "font-semibold text-ink" : "text-body")}>
-      <span>{label}</span>
-      <span className={cn("num", value < 0 && !strong && "text-muted", total && value < 0 && "text-danger")}>{fmtTL(value)}</span>
-    </li>
-  );
-}
-
-function FirmPanel({ firmId, totals, share }: {
-  firmId: FirmId;
-  totals: ReturnType<typeof monthSummary>["firms"][number];
-  share: number;
+function SectionCard({ href, icon, tone, bar, title, main, lines, share }: {
+  href: string; icon: LucideIcon; tone: ChipTone; bar: string; title: string; main: string; lines: string[]; share: number;
 }) {
-  const m = FIRM_META[firmId];
-  const margin = totals.revenue ? totals.profit / totals.revenue : 0;
+  const soft = tone === "ecrin" ? "from-ecrin-soft" : tone === "guzel" ? "from-guzel-soft" : "from-halis-soft";
   return (
-    <Card className="overflow-hidden">
-      <div className={cn("flex items-center justify-between gap-3 border-b border-hairline px-5 py-3.5", m.soft)}>
+    <Link href={href} className={cn("group relative overflow-hidden rounded-xl border border-hairline bg-gradient-to-br to-surface to-70% p-4 transition-shadow hover:shadow-[0_8px_24px_-12px_rgba(15,30,61,0.35)]", soft)}>
+      <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <span className={cn("size-3 rounded-full", m.dot)} aria-hidden />
-          <h2 className="text-[15px] font-semibold text-ink">{m.name}</h2>
+          <IconChip icon={icon} tone={tone} className="bg-surface/80" />
+          <span className="text-[14px] font-semibold text-ink">{title}</span>
         </div>
-        <span className="num text-[13px] text-body">Cironun {fmtPct(share)}&apos;i</span>
+        <ArrowRight className="size-4 text-muted transition-transform group-hover:translate-x-0.5" aria-hidden />
       </div>
-      <dl className="grid grid-cols-2 gap-x-4 gap-y-3 px-5 py-4 sm:grid-cols-4">
-        <Stat label="Ciro" value={fmtTL(totals.revenue)} />
-        <Stat label="Brüt kâr" value={fmtTL(totals.profit)} sub={`Marj ${fmtPct(margin)}`} />
-        <Stat label="Teslim" value={fmtKg(totals.kg)} />
-        <Stat label="Fatura (KDV dahil)" value={fmtTL(totals.invoiceTotal)} sub={`KDV ${fmtTL(totals.kdv)}`} />
-      </dl>
-      <div className="border-t border-hairline">
-        {totals.products.length === 0 ? (
-          <p className="px-5 py-4 text-[13px] text-muted">Bu ay bu firmaya atanmış ürün yok.</p>
-        ) : (
-          <ul>
-            {totals.products.map((p) => (
-              <li key={p.contractId} className="grid grid-cols-[1fr_auto_auto] items-center gap-4 border-b border-hairline/60 px-5 py-2 text-[13px] last:border-0">
-                <span className="truncate font-medium text-ink">{p.productName}</span>
-                <span className="num text-right text-muted">{fmtKg(p.kg)} × {fmtTL2(p.salePrice)}</span>
-                <span className="num w-28 text-right text-ink">{fmtTL(p.revenue)}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="num mt-3 text-[26px] font-semibold tracking-tight text-ink">{main}</div>
+      <div className="mt-0.5 flex flex-wrap gap-x-2 text-xs text-muted">{lines.map((l, i) => <span key={l}>{i > 0 && "· "}{l}</span>)}</div>
+      <div className="mt-3 flex items-center gap-2">
+        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface/90" role="meter" aria-label="Bu ayki satışlardaki payı" aria-valuenow={Math.round(share * 100)} aria-valuemin={0} aria-valuemax={100}>
+          <div className={cn("h-full rounded-full", bar)} style={{ width: `${share * 100}%` }} />
+        </div>
+        <span className="num text-xs text-body">{fmtPct(share)}</span>
       </div>
-    </Card>
-  );
-}
-
-function Stat({ label, value, sub }: { label: string; value: string; sub?: string }) {
-  return (
-    <div className="min-w-0">
-      <dt className="text-xs text-muted">{label}</dt>
-      <dd className="num mt-0.5 truncate text-[17px] font-semibold text-ink">{value}</dd>
-      {sub && <dd className="num text-xs text-muted">{sub}</dd>}
-    </div>
+    </Link>
   );
 }

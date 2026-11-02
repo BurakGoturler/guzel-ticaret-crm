@@ -36,6 +36,9 @@
   --firm-guzel: #eb6834;
   --firm-guzel-soft: #fdeee7;
   --firm-none: #9aa3b0;
+  /* Halis — kendi fiyatıyla satan kişi; firma renklerinden ayrışan camgöbeği */
+  --halis: #13877f;
+  --halis-soft: #e2f4f2;
 
   /* Metrik serileri (satış / alış / kâr) — kontrast uyarısı: tablo görünümü zorunlu */
   --series-sale: #6250d6;
@@ -75,6 +78,8 @@
     --firm-ecrin-soft: #16294a;
     --firm-guzel: #d95926;
     --firm-guzel-soft: #3a1f15;
+    --halis: #23a59b;
+    --halis-soft: #12302d;
     --series-sale: #9085e9;
     --series-cost: #c98500;
     --series-profit: #199e70;
@@ -107,6 +112,8 @@
   --color-ecrin-soft: var(--firm-ecrin-soft);
   --color-guzel: var(--firm-guzel);
   --color-guzel-soft: var(--firm-guzel-soft);
+  --color-halis: var(--halis);
+  --color-halis-soft: var(--halis-soft);
   --color-sale: var(--series-sale);
   --color-cost: var(--series-cost);
   --color-profit: var(--series-profit);
@@ -139,3 +146,39 @@ body {
 .recharts-surface:focus {
   outline: none;
 }
+
+/* ---------- Harita (ary-teklif TurkeyMap3D uyarlaması) ---------- */
+:root {
+  --map-empty: #e4e9ee;
+  --map-side-top: #8b98a6;
+  --map-side-bottom: #56626f;
+  --map-stage-a: #f7fafc;
+  --map-stage-b: #eef2f6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --map-empty: #2a3550;
+    --map-side-top: #3a4660;
+    --map-side-bottom: #222b3f;
+    --map-stage-a: #18223a;
+    --map-stage-b: #131b2e;
+  }
+}
+.map-stage {
+  position: relative;
+  padding: 18px 10px 4px;
+  perspective: 1800px;
+  background: radial-gradient(ellipse at 50% 40%, var(--map-stage-a) 0%, var(--map-stage-b) 70%);
+}
+.map-compact { padding: 8px 6px 0; }
+/* 3B: harita hafif geriye yatırılır; kabartmanın yan yüzü SVG içinde çizilir */
+.map3d { display: block; width: 100%; height: auto; overflow: visible; transform: rotateX(24deg); transform-origin: 50% 70%; }
+.map-il { stroke: #ffffff; stroke-width: 0.8; stroke-linejoin: round; cursor: pointer; transition: fill 0.15s; }
+.map-il.on { filter: brightness(1.08); }
+.map-tip {
+  position: absolute; z-index: 5; transform: translate(14px, -100%); pointer-events: none;
+  background: var(--shell); color: #fff; padding: 8px 11px; font-size: 12px; line-height: 1.5;
+  border-radius: 6px; box-shadow: 0 8px 24px rgba(15, 30, 61, 0.25); white-space: nowrap;
+}
+.map-tip b { font-size: 13px; font-weight: 600; }
+.map-tip div { color: #c9d2e3; }

@@ -42,3 +42,6 @@ next-env.d.ts
 
 # statik önizleme çıktısı
 guzel-ticaret-arayuz.html
+
+# yerel veri (Excel seed + ekrandan girilenler)
+/.data/
