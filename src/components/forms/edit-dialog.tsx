@@ -12,7 +12,9 @@ export const useDialogClose = () => useContext(DialogClose);
  * Satır düzenleme penceresi: kalem düğmesi + ortada açılan form.
  * Tarayıcı diyaloğu kullanmaz; Esc ve dış alana tıklama kapatır.
  */
-export function EditDialog({ title, subtitle, children, label = "Düzenle" }: {
+export function EditDialog({ title, subtitle, children, label = "Düzenle", icon }: {
+  /** Düğme simgesi (varsayılan kalem). Sunucudan geldiği için öğe olarak verilir. */
+  icon?: React.ReactNode;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
@@ -43,7 +45,7 @@ export function EditDialog({ title, subtitle, children, label = "Düzenle" }: {
         aria-label={label}
         title={label}
       >
-        <Pencil className="size-3.5" aria-hidden />
+        {icon ?? <Pencil className="size-3.5" aria-hidden />}
       </button>
       {open && createPortal(
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-16" onMouseDown={(e) => { if (e.target === e.currentTarget) setOpen(false); }}>

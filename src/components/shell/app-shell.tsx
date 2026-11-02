@@ -3,7 +3,8 @@
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { cn } from "@/lib/cn";
-import { Sidebar } from "./sidebar";
+import { Sidebar, type ShellUser } from "./sidebar";
+import { UserMenu } from "./user-menu";
 
 /* Menünün açık/daraltılmış hali tarayıcıda hatırlanır (yalnız bu kullanıcı için). */
 const KEY = "gt-sidebar-collapsed";
@@ -22,7 +23,7 @@ const subscribe = (l: () => void) => { listeners.add(l); return () => { listener
 const getSnapshot = () => (memory ??= readCollapsed());
 const getServerSnapshot = () => false;
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({ children, user }: { children: React.ReactNode; user: ShellUser }) {
   const [open, setOpen] = useState(false);
   const collapsed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const toggle = useCallback(() => writeCollapsed(!getSnapshot()), []);
@@ -55,11 +56,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
       <div className="min-w-0">
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-hairline bg-surface/90 px-4 backdrop-blur lg:hidden">
-          <button aria-label="Menüyü aç" onClick={() => setOpen(true)} className="rounded-md p-1.5 text-ink hover:bg-surface-alt">
+        <header className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-hairline bg-surface/90 px-4 backdrop-blur sm:px-6 lg:px-8">
+          <button aria-label="Menüyü aç" onClick={() => setOpen(true)} className="rounded-md p-1.5 text-ink hover:bg-surface-alt lg:hidden">
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
-          <span className="font-semibold text-ink">Güzel Ticaret</span>
+          <span className="font-semibold text-ink lg:hidden">Güzel Ticaret</span>
+          <div className="ml-auto"><UserMenu user={user} /></div>
         </header>
         <main className="mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 lg:px-8">{children}</main>
       </div>

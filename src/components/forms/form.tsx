@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, CircleAlert, Loader2, Trash2 } from "lucide-react";
+import { CheckCircle2, CircleAlert, Eye, EyeOff, Loader2, Trash2 } from "lucide-react";
 import { useActionState, useEffect, useRef, useState, useTransition } from "react";
 import { useFormStatus } from "react-dom";
 import type { ActionState } from "@/lib/actions";
@@ -78,6 +78,26 @@ const control = "h-9 w-full min-w-0 rounded-md border border-hairline-strong bg-
 
 export function Input({ className, ...p }: React.InputHTMLAttributes<HTMLInputElement>) {
   return <input className={cn(control, className)} {...p} />;
+}
+
+/** Şifre alanı: sağdaki göz düğmesi şifreyi gösterir / gizler. */
+export function PasswordInput({ className, ...p }: Omit<React.InputHTMLAttributes<HTMLInputElement>, "type">) {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="relative">
+      <Input {...p} type={show ? "text" : "password"} className={cn("pr-10", className)} autoCapitalize="none" spellCheck={false} />
+      <button
+        type="button"
+        onClick={() => setShow((v) => !v)}
+        className="absolute inset-y-0 right-0 grid w-9 place-items-center rounded-r-md text-muted hover:text-ink focus-visible:text-ink"
+        aria-label={show ? "Şifreyi gizle" : "Şifreyi göster"}
+        aria-pressed={show}
+        title={show ? "Şifreyi gizle" : "Şifreyi göster"}
+      >
+        {show ? <EyeOff className="size-4" aria-hidden /> : <Eye className="size-4" aria-hidden />}
+      </button>
+    </div>
+  );
 }
 
 export function NumberInput({ className, ...p }: React.InputHTMLAttributes<HTMLInputElement>) {

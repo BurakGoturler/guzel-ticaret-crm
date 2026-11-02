@@ -12,6 +12,11 @@ import { NAV } from "./nav";
  * duzenbi'deki gibi Dock benzeri çalışır: imlecin hizasındaki simge büyür,
  * yanında adıyla bir hap kayarak açılır, komşuları uzaklığa göre daha az.
  */
+export interface ShellUser {
+  name: string;
+  username: string;
+}
+
 export function Sidebar({ collapsed = false, onToggle, onNavigate }: {
   collapsed?: boolean;
   onToggle?: () => void;
@@ -93,13 +98,6 @@ export function Sidebar({ collapsed = false, onToggle, onNavigate }: {
         ))}
       </div>
 
-      {!collapsed && (
-        <div className="mt-auto px-2 text-[11px] leading-relaxed text-shell-ink/50">
-          İlk veri: 2026 yaz dönemi.xlsx
-          <br />
-          Ekrandan girilenler kaydedilir.
-        </div>
-      )}
     </nav>
   );
 }

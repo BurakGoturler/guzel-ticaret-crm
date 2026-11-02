@@ -1,6 +1,7 @@
 "use server";
 
 import { refresh } from "next/cache";
+import { getCurrentUser } from "@/lib/auth/session";
 import { KURUM_ID, mutate, newId, resetStore } from "@/lib/data/repo";
 import { contractFor, monthOf, seasonOfMonth } from "@/lib/domain/calc";
 import type { Customer, Dataset, Fire, FirmId, Product } from "@/lib/domain/types";
@@ -36,7 +37,11 @@ const slug = (s: string) =>
     .replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ı/g, "i").replace(/ö/g, "o").replace(/ş/g, "s").replace(/ü/g, "u")
     .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-function run(fn: (ds: Dataset) => ActionState): ActionState {
+const NO_SESSION = "Oturumunuz kapanmış; sayfayı yenileyip tekrar giriş yapın.";
+
+/** Her kayıt işlemi buradan geçer: önce oturum denetlenir, sonra veri atomik yazılır. */
+async function run(fn: (ds: Dataset) => ActionState): Promise<ActionState> {
+  if (!(await getCurrentUser())) return fail(NO_SESSION);
   try {
     let result: ActionState = fail("İşlem yapılmadı");
     mutate((ds) => {
@@ -406,6 +411,7 @@ export async function saveSettings(_: ActionState, fd: FormData): Promise<Action
 }
 
 export async function resetData(_: ActionState, fd: FormData): Promise<ActionState> {
+  if (!(await getCurrentUser())) return fail(NO_SESSION);
   if (fd.get("confirm") !== "SIFIRLA") return fail("Onay için kutuya SIFIRLA yazın.");
   try {
     resetStore();

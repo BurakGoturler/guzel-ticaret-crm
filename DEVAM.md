@@ -70,7 +70,21 @@ Referans projeler (altyapı + arayüz):
 - **Daraltılabilir sol menü (duzenbi tarzı):** üstteki düğme veya Ctrl+B ile 240px ↔ 68px. Daraltılınca yalnız simgeler;
   imleç yaklaşınca simge büyür ve yanında adıyla bir hap kayarak açılır (Dock benzeri, `--dock` 0…1 kosinüs düşüşü,
   80px menzil, `prefers-reduced-motion`'da kapalı). Tercih `localStorage` (`gt-sidebar-collapsed`) — `useSyncExternalStore`.
-  Mobilde çekmece menü aynen duruyor. Commit edilmedi.
+  Mobilde çekmece menü aynen duruyor.
+- **Giriş ve kullanıcılar (2 Kasım 2026):** tüm kullanıcılar aynı yetkide "süper yönetici"; her biri her işlemi
+  yapar ve yeni kullanıcı ekler/düzenler/siler, şifre belirler. Kullanıcılar `.data/auth.json`'da (git dışı,
+  "verileri sıfırla" bunu silmez); şifre scrypt + tuz; oturum HMAC imzalı çerez (`gt_session`, 30 gün),
+  şifre değişince o kişinin açık oturumları kapanır. Koruma üç katman: `src/proxy.ts` (oturumsuz → /giris,
+  oturumsuz POST → 401), `(panel)/layout.tsx` `requireUser()`, her server action `run()` içinde oturum denetimi.
+  Hiç kullanıcı yoksa /giris ilk yönetici kurulum formunu gösterir. Yerelde `admin` hesabı açıldı
+  (şifre kullanıcıya iletildi; Kullanıcılar → anahtar simgesinden değiştirilir). Kendi hesabını ve son
+  kullanıcıyı silmek engelli. Çıkışta sayfa tam yenilenir (önceki ekranlar bellekte kalmasın).
+- **Giriş ekranı videolu:** `public/videos/hal-1…5.mp4` (+ .jpg kapak) — Mixkit hal/pazar klipleri (ticari kullanıma
+  açık ücretsiz lisans), 720p, sessiz, ≤12 sn, toplam ~4 MB. `VideoBackdrop` sırayla oynatır, yumuşak geçiş;
+  yalnız oynayan + sıradaki yüklenir; "hareketi azalt"ta durağan kare. Örtü hafif (kullanıcı "daha belli olsun" dedi),
+  sol taraftaki açıklama metinleri kullanıcı isteğiyle kaldırıldı; kart ortada. Proxy eşleşmesinden mp4/webm hariç.
+- **Çıkış sağ üstte:** üst çubukta kullanıcı menüsü (`user-menu.tsx`: ad, Kullanıcılar, Şifremi değiştir, Çıkış).
+  Sol menünün altındaki kullanıcı alanı kaldırıldı. Şifre alanlarında göz düğmesi (`PasswordInput`).
 
 ### Excel'den farklı hesaplananlar (bilinçli)
 - Kalan kg önceki aydan devreder (Excel her ay B5'e 300.000 yazıyordu).
@@ -92,7 +106,7 @@ Referans projeler (altyapı + arayüz):
 ## Sıradaki adım (önerilen)
 Kullanıcı Adım 2'yi yerelde gözden geçirsin; geri bildirime göre düzeltme.
 Ardından: veritabanı (Prisma + PostgreSQL, crm-genel ile aynı; yalnız `repo.ts` + `actions.ts` değişir)
-→ giriş/yetki → renk soruları (1–2) netleşince satış "durum" alanı.
+→ (giriş ✅) → renk soruları (1–2) netleşince satış "durum" alanı.
 
 ## Teknik notlar / tuzaklar
 - `next.config.ts` → `cacheComponents: true`. `searchParams` okuyan sayfalarda
@@ -106,4 +120,8 @@ Ardından: veritabanı (Prisma + PostgreSQL, crm-genel ile aynı; yalnız `repo.
 - `globals.css`'e yeni renk token'ı ekleyince Tailwind/Turbopack dev önbelleği bazen yakalamıyor →
   dev sunucusunu yeniden başlat.
 - Git Bash'te Playwright betiğine `/` yolu verirken `MSYS_NO_PATHCONV=1` gerekli.
+- Oturum okuyan kodda `Date.now()` öncesi `connection()` gerekli (dev "unstable value" hatası).
+- React form eylemi bittiğinde kontrolsüz alanları sıfırlar → giriş formunda kullanıcı adı kontrollü.
+- Server component'ten client component'e simge **bileşeni** geçilmez; öğe (`<KeyRound />`) geçilir.
+- Üretimde `AUTH_SECRET` ortam değişkeni verilebilir; yoksa `auth.json` içindeki rastgele anahtar kullanılır.
 - GitHub: https://github.com/BurakGoturler/guzel-ticaret-crm (özel repo)

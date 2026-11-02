@@ -1,5 +1,5 @@
 import {
-  Building2, Carrot, ChartColumnBig, FileText, HandCoins, LayoutDashboard, Map, PackageX, Settings, ShoppingBasket, Users, Wallet,
+  Building2, Carrot, ChartColumnBig, FileText, HandCoins, LayoutDashboard, Map, PackageX, Settings, ShoppingBasket, UserCog, Users, Wallet,
   type LucideIcon,
 } from "lucide-react";
 
@@ -35,6 +35,7 @@ export const NAV: { title: string; items: NavItem[] }[] = [
       { href: "/musteriler", label: "Müşteriler", icon: Users },
       { href: "/firmalar", label: "Firmalar", icon: Building2 },
       { href: "/ayarlar", label: "Ayarlar", icon: Settings },
+      { href: "/kullanicilar", label: "Kullanıcılar", icon: UserCog },
     ],
   },
 ];
