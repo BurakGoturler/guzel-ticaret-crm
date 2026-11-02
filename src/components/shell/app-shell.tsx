@@ -1,15 +1,50 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { cn } from "@/lib/cn";
 import { Sidebar } from "./sidebar";
+
+/* Menünün açık/daraltılmış hali tarayıcıda hatırlanır (yalnız bu kullanıcı için). */
+const KEY = "gt-sidebar-collapsed";
+const listeners = new Set<() => void>();
+
+function readCollapsed() {
+  try { return localStorage.getItem(KEY) === "1"; } catch { return false; }
+}
+function writeCollapsed(v: boolean) {
+  try { localStorage.setItem(KEY, v ? "1" : "0"); } catch { /* depolama kapalıysa yalnız bu oturumda */ }
+  memory = v;
+  listeners.forEach((l) => l());
+}
+let memory: boolean | null = null;
+const subscribe = (l: () => void) => { listeners.add(l); return () => { listeners.delete(l); }; };
+const getSnapshot = () => (memory ??= readCollapsed());
+const getServerSnapshot = () => false;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const collapsed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const toggle = useCallback(() => writeCollapsed(!getSnapshot()), []);
+
+  // Ctrl/⌘ + B ile aç-kapa
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "b") { e.preventDefault(); toggle(); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [toggle]);
+
   return (
-    <div className="min-h-dvh lg:grid lg:grid-cols-[240px_1fr]">
-      <aside className="sticky top-0 hidden h-dvh lg:block">
-        <Sidebar />
+    <div
+      className={cn(
+        "min-h-dvh lg:grid lg:transition-[grid-template-columns] lg:duration-200 lg:ease-out motion-reduce:transition-none",
+        collapsed ? "lg:grid-cols-[68px_1fr]" : "lg:grid-cols-[240px_1fr]",
+      )}
+    >
+      <aside className="sticky top-0 z-40 hidden h-dvh lg:block">
+        <Sidebar collapsed={collapsed} onToggle={toggle} />
       </aside>
       {open && (
         <div className="fixed inset-0 z-40 lg:hidden">

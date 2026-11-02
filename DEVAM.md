@@ -67,6 +67,10 @@ Referans projeler (altyapı + arayüz):
 - **Düzenleme her yerde:** satış (`updateSale` — ürün/tarih değişirse sözleşme yeniden bulunur), fire/iade,
   masraf, sözleşme → satırdaki kalem simgesi `EditDialog` penceresini açar, kayıttan sonra kendiliğinden kapanır
   (`useDialogClose` bağlamı `ActionForm` içinde). Müşteri, ürün, alış fiyatı, firma ataması, oranlar zaten düzenlenebiliyordu.
+- **Daraltılabilir sol menü (duzenbi tarzı):** üstteki düğme veya Ctrl+B ile 240px ↔ 68px. Daraltılınca yalnız simgeler;
+  imleç yaklaşınca simge büyür ve yanında adıyla bir hap kayarak açılır (Dock benzeri, `--dock` 0…1 kosinüs düşüşü,
+  80px menzil, `prefers-reduced-motion`'da kapalı). Tercih `localStorage` (`gt-sidebar-collapsed`) — `useSyncExternalStore`.
+  Mobilde çekmece menü aynen duruyor. Commit edilmedi.
 
 ### Excel'den farklı hesaplananlar (bilinçli)
 - Kalan kg önceki aydan devreder (Excel her ay B5'e 300.000 yazıyordu).
