@@ -45,3 +45,6 @@ guzel-ticaret-arayuz.html
 
 # yerel veri (Excel seed + ekrandan girilenler)
 /.data/
+
+.vercel
+.env*

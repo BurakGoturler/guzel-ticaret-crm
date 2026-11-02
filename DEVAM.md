@@ -89,6 +89,11 @@ Referans projeler (altyapı + arayüz):
   `repo.mutate`, `resetStore`, `auth/core` fonksiyonları artık async. Proxy yalnız imza+süre bakar (DB'ye gitmez).
   İlk yükleme: `DATABASE_URL=... node scripts/db-seed.mjs` (yalnız yoksa yazar; yerel admin hesabını taşır,
   böylece sitede ilk-yönetici ekranı herkese açık kalmaz). Not: tablolar normalize değil — ileride Prisma ile bölünebilir.
+- **Vercel'de yayında (2 Kasım 2026):** https://guzel-ticaret-crm.vercel.app — hesap `burakgoturlerr-5064`
+  (ekip `burakgoturlerr-5064s-projects`), proje `guzel-ticaret-crm`, bölge fra1. GitHub `main`'e her push otomatik
+  yayına çıkar. Veritabanı: Neon `guzel-ticaret-db` (fra1, Marketplace, ücretsiz). `AUTH_SECRET` production+preview'da
+  tanımlı. DB'ye yerel `admin` hesabı (kullanıcının kendi şifresiyle) ve seed verisi yüklendi; ilk-yönetici ekranı kapalı.
+  Not: CLI'da başka hesap (`yazilimborumedya`) açık kalmıştı; doğru hesap Brave'den onaylandı.
 - **Çıkış sağ üstte:** üst çubukta kullanıcı menüsü (`user-menu.tsx`: ad, Kullanıcılar, Şifremi değiştir, Çıkış).
   Sol menünün altındaki kullanıcı alanı kaldırıldı. Şifre alanlarında göz düğmesi (`PasswordInput`).
 
